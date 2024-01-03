@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package gamingplatform.api.chat.v1;
+
+option php_namespace = "GamingPlatform\\Api\\Chat\\V1";
+option php_metadata_namespace = "GamingPlatform\\Api\\GPBMetadata\\Chat\\V1";
+
+message InitiateChat {
+  string idempotency_key = 1;
+  string correlation_id = 2;
+  repeated string authors = 3;
+}
+
+message InitiateChatResponse {
+  string chat_id = 1;
+  string correlation_id = 2;
+}
+
+message MessageWritten {
+  string chat_id = 1;
+  string message_id = 2;
+  string author_id = 3;
+  // Specifies the date and time the message was written in ISO 8601 format.
+  string written_at = 4;
+  string message = 5;
+}

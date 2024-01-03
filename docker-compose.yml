@@ -1,0 +1,7 @@
+version: '3.4'
+
+services:
+    protoc:
+        build: .
+        volumes:
+            - ./:/project:delegated

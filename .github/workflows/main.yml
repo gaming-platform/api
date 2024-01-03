@@ -1,0 +1,35 @@
+name: CI
+
+on:
+  pull_request:
+
+jobs:
+  pipeline:
+    name: Main
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Setup buf
+        uses: bufbuild/buf-setup-action@v1
+      - name: Lint schema files
+        uses: bufbuild/buf-lint-action@v1
+        with:
+          input: 'schema'
+      - name: Check for breaking changes
+        uses: bufbuild/buf-breaking-action@v1
+        with:
+          input: 'schema'
+          against: 'https://github.com/gaming-platform/api.git#branch=main,subdir=schema'
+      - name: Ensure no uncommitted changes
+        run: |
+          ./project protoc
+          git add .
+          DIFF=$(git diff --cached)
+          if [ -n "$DIFF" ]; then
+            echo "################################"
+            echo "# UNCOMMITTED CHANGES DETECTED #"
+            echo "################################"
+            echo "$DIFF"
+            exit 1
+          fi

@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+
+set -e
+
+help() {
+    echo
+    echo ------------------
+    echo Available commands
+    echo ------------------
+    echo protoc
+    echo Generate language files with protoc.
+    echo
+}
+
+protoc() {
+    docker compose run --rm protoc
+}
+
+if [ "$*" = "" ]
+then
+    help
+else
+    $1 "${@:2}"
+fi
