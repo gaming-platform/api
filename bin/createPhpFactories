@@ -1,0 +1,92 @@
+#!/usr/bin/env php
+<?php
+
+declare(strict_types=1);
+
+const PACKAGE_NAMESPACE = 'GamingPlatform\\Api';
+const PACKAGE_PATH = '/project/php/GamingPlatform/Api';
+
+function loadFiles($directory): void
+{
+    $entries = array_diff(scandir($directory), ['.', '..']);
+    foreach ($entries as $entry) {
+        $path = $directory . '/' . $entry;
+        is_dir($path) ? loadFiles($path) : require_once $path;
+    }
+}
+
+function findMessageClasses($packageNamespace): array
+{
+    return array_filter(
+        get_declared_classes(),
+        static fn(string $class) => str_starts_with($class, $packageNamespace)
+            && in_array(\Google\Protobuf\Internal\Message::class, class_parents($class))
+    );
+}
+
+function generateFactories(string $packageNamespace, string $packagePath, array $classes): array
+{
+    $factories = [];
+
+    foreach ($classes as $class) {
+        preg_match(
+            '/(?<namespace>.*)\\\\(?<version>V\d+)\\\\(?<message>.*)/',
+            substr($class, strlen($packageNamespace) + 1),
+            $matches
+        );
+
+        $factoryName = str_replace('\\', '', $matches['namespace']) . $matches['version'] . 'Factory';
+        $factoryPath = str_replace('\\', '/', $matches['namespace']) . '/' . $matches['version'];
+
+        $factories[$factoryName] ??= [
+            'path' => $packagePath . '/' . $factoryPath . '/' . $factoryName . '.php',
+            'namespace' => $packageNamespace . '\\' . $matches['namespace'] . '\\' . $matches['version'],
+            'name' => $factoryName,
+            'methods' => []
+        ];
+
+        $factories[$factoryName]['methods'][] = [
+            'name' => 'create' . $matches['message'],
+            'returnType' => '\\' . $class
+        ];
+    }
+
+    return $factories;
+}
+
+function writeFactories(array $factories): void
+{
+    foreach ($factories as $factory) {
+        $content = '<?php' . PHP_EOL . PHP_EOL;
+        $content .= 'declare(strict_types=1);' . PHP_EOL . PHP_EOL;
+        $content .= 'namespace ' . $factory['namespace'] . ';' . PHP_EOL . PHP_EOL;
+        $content .= '// This file is auto-generated. Do not edit!' . PHP_EOL . PHP_EOL;
+        $content .= 'final class ' . $factory['name'] . PHP_EOL;
+        $content .= '{' . PHP_EOL;
+        foreach ($factory['methods'] as $method) {
+            $content .= '    public static function ' . $method['name'] . '(' . PHP_EOL;
+            $content .= '        string $data' . PHP_EOL;
+            $content .= '    ): ' . $method['returnType'] . ' {' . PHP_EOL;
+            $content .= '        static $template;' . PHP_EOL;
+            $content .= '        $template ??= new ' . $method['returnType'] . '();' . PHP_EOL;
+            $content .= '        $message = clone $template;' . PHP_EOL;
+            $content .= '        $message->mergeFromString($data);' . PHP_EOL;
+            $content .= '        return $message;' . PHP_EOL;
+            $content .= '    }' . PHP_EOL . PHP_EOL;
+        }
+        $content .= '}' . PHP_EOL;
+
+        echo 'Write ' . $factory['path'] . PHP_EOL;
+        file_put_contents($factory['path'], $content);
+    }
+}
+
+loadFiles(PACKAGE_PATH);
+
+writeFactories(
+    generateFactories(
+        PACKAGE_NAMESPACE,
+        PACKAGE_PATH,
+        findMessageClasses(PACKAGE_NAMESPACE)
+    )
+);
