@@ -21,6 +21,10 @@ class UserSignedUp extends \Google\Protobuf\Internal\Message
      * Generated from protobuf field <code>string username = 2;</code>
      */
     protected $username = '';
+    /**
+     * Generated from protobuf field <code>string email = 3;</code>
+     */
+    protected $email = '';
 
     /**
      * Constructor.
@@ -30,6 +34,7 @@ class UserSignedUp extends \Google\Protobuf\Internal\Message
      *
      *     @type string $user_id
      *     @type string $username
+     *     @type string $email
      * }
      */
     public function __construct($data = NULL) {
@@ -77,6 +82,28 @@ class UserSignedUp extends \Google\Protobuf\Internal\Message
     {
         GPBUtil::checkString($var, True);
         $this->username = $var;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>string email = 3;</code>
+     * @return string
+     */
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
+    /**
+     * Generated from protobuf field <code>string email = 3;</code>
+     * @param string $var
+     * @return $this
+     */
+    public function setEmail($var)
+    {
+        GPBUtil::checkString($var, True);
+        $this->email = $var;
 
         return $this;
     }

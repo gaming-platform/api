@@ -16,13 +16,14 @@ class Messaging
         }
         $pool->internalAddGeneratedFile(
             '
-û
+Š
 .gamingplatform/api/identity/v1/messaging.protogamingplatform.api.identity.v1"
 UserArrived
-user_id (	"1
+user_id (	"@
 UserSignedUp
 user_id (	
-username (	BNÊGamingPlatform\\Api\\Identity\\V1â*GamingPlatform\\Api\\GPBMetadata\\Identity\\V1bproto3'
+username (	
+email (	BNÊGamingPlatform\\Api\\Identity\\V1â*GamingPlatform\\Api\\GPBMetadata\\Identity\\V1bproto3'
         , true);
 
         static::$is_initialized = true;
