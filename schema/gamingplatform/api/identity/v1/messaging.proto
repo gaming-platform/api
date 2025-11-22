@@ -2,6 +2,7 @@ syntax = "proto3";
 
 package gamingplatform.api.identity.v1;
 
+option go_package = "identity/v1;identityv1";
 option php_namespace = "GamingPlatform\\Api\\Identity\\V1";
 option php_metadata_namespace = "GamingPlatform\\Api\\GPBMetadata\\Identity\\V1";
 
