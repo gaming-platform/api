@@ -17,6 +17,14 @@ package with the following command.
 composer require gaming-platform/api
 ```
 
+### Go
+
+Install the package with the following command.
+
+```bash
+go get github.com/gaming-platform/api
+```
+
 ## Contributing
 
 You can find the schema definitions in the [/schema](/schema) directory.
