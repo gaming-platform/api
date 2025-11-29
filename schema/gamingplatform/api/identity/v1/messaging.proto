@@ -15,3 +15,24 @@ message UserSignedUp {
   string username = 2;
   string email = 3;
 }
+
+message RegisterBot {
+  string username = 1;
+}
+
+message RegisterBotResponse {
+  string bot_id = 1;
+}
+
+message GetBotByUsername {
+  string username = 1;
+}
+
+message GetBotByUsernameResponse {
+  Bot bot = 1;
+}
+
+message Bot {
+  string bot_id = 1;
+  string username = 2;
+}

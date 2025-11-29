@@ -125,6 +125,234 @@ func (x *UserSignedUp) GetEmail() string {
 	return ""
 }
 
+type RegisterBot struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Username      string                 `protobuf:"bytes,1,opt,name=username,proto3" json:"username,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *RegisterBot) Reset() {
+	*x = RegisterBot{}
+	mi := &file_gamingplatform_api_identity_v1_messaging_proto_msgTypes[2]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *RegisterBot) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*RegisterBot) ProtoMessage() {}
+
+func (x *RegisterBot) ProtoReflect() protoreflect.Message {
+	mi := &file_gamingplatform_api_identity_v1_messaging_proto_msgTypes[2]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use RegisterBot.ProtoReflect.Descriptor instead.
+func (*RegisterBot) Descriptor() ([]byte, []int) {
+	return file_gamingplatform_api_identity_v1_messaging_proto_rawDescGZIP(), []int{2}
+}
+
+func (x *RegisterBot) GetUsername() string {
+	if x != nil {
+		return x.Username
+	}
+	return ""
+}
+
+type RegisterBotResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	BotId         string                 `protobuf:"bytes,1,opt,name=bot_id,json=botId,proto3" json:"bot_id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *RegisterBotResponse) Reset() {
+	*x = RegisterBotResponse{}
+	mi := &file_gamingplatform_api_identity_v1_messaging_proto_msgTypes[3]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *RegisterBotResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*RegisterBotResponse) ProtoMessage() {}
+
+func (x *RegisterBotResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_gamingplatform_api_identity_v1_messaging_proto_msgTypes[3]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use RegisterBotResponse.ProtoReflect.Descriptor instead.
+func (*RegisterBotResponse) Descriptor() ([]byte, []int) {
+	return file_gamingplatform_api_identity_v1_messaging_proto_rawDescGZIP(), []int{3}
+}
+
+func (x *RegisterBotResponse) GetBotId() string {
+	if x != nil {
+		return x.BotId
+	}
+	return ""
+}
+
+type GetBotByUsername struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Username      string                 `protobuf:"bytes,1,opt,name=username,proto3" json:"username,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetBotByUsername) Reset() {
+	*x = GetBotByUsername{}
+	mi := &file_gamingplatform_api_identity_v1_messaging_proto_msgTypes[4]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetBotByUsername) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetBotByUsername) ProtoMessage() {}
+
+func (x *GetBotByUsername) ProtoReflect() protoreflect.Message {
+	mi := &file_gamingplatform_api_identity_v1_messaging_proto_msgTypes[4]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetBotByUsername.ProtoReflect.Descriptor instead.
+func (*GetBotByUsername) Descriptor() ([]byte, []int) {
+	return file_gamingplatform_api_identity_v1_messaging_proto_rawDescGZIP(), []int{4}
+}
+
+func (x *GetBotByUsername) GetUsername() string {
+	if x != nil {
+		return x.Username
+	}
+	return ""
+}
+
+type GetBotByUsernameResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Bot           *Bot                   `protobuf:"bytes,1,opt,name=bot,proto3" json:"bot,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetBotByUsernameResponse) Reset() {
+	*x = GetBotByUsernameResponse{}
+	mi := &file_gamingplatform_api_identity_v1_messaging_proto_msgTypes[5]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetBotByUsernameResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetBotByUsernameResponse) ProtoMessage() {}
+
+func (x *GetBotByUsernameResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_gamingplatform_api_identity_v1_messaging_proto_msgTypes[5]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetBotByUsernameResponse.ProtoReflect.Descriptor instead.
+func (*GetBotByUsernameResponse) Descriptor() ([]byte, []int) {
+	return file_gamingplatform_api_identity_v1_messaging_proto_rawDescGZIP(), []int{5}
+}
+
+func (x *GetBotByUsernameResponse) GetBot() *Bot {
+	if x != nil {
+		return x.Bot
+	}
+	return nil
+}
+
+type Bot struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	BotId         string                 `protobuf:"bytes,1,opt,name=bot_id,json=botId,proto3" json:"bot_id,omitempty"`
+	Username      string                 `protobuf:"bytes,2,opt,name=username,proto3" json:"username,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *Bot) Reset() {
+	*x = Bot{}
+	mi := &file_gamingplatform_api_identity_v1_messaging_proto_msgTypes[6]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *Bot) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Bot) ProtoMessage() {}
+
+func (x *Bot) ProtoReflect() protoreflect.Message {
+	mi := &file_gamingplatform_api_identity_v1_messaging_proto_msgTypes[6]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Bot.ProtoReflect.Descriptor instead.
+func (*Bot) Descriptor() ([]byte, []int) {
+	return file_gamingplatform_api_identity_v1_messaging_proto_rawDescGZIP(), []int{6}
+}
+
+func (x *Bot) GetBotId() string {
+	if x != nil {
+		return x.BotId
+	}
+	return ""
+}
+
+func (x *Bot) GetUsername() string {
+	if x != nil {
+		return x.Username
+	}
+	return ""
+}
+
 var File_gamingplatform_api_identity_v1_messaging_proto protoreflect.FileDescriptor
 
 const file_gamingplatform_api_identity_v1_messaging_proto_rawDesc = "" +
@@ -135,7 +363,18 @@ const file_gamingplatform_api_identity_v1_messaging_proto_rawDesc = "" +
 	"\fUserSignedUp\x12\x17\n" +
 	"\auser_id\x18\x01 \x01(\tR\x06userId\x12\x1a\n" +
 	"\busername\x18\x02 \x01(\tR\busername\x12\x14\n" +
-	"\x05email\x18\x03 \x01(\tR\x05emailBfZ\x16identity/v1;identityv1\xca\x02\x1eGamingPlatform\\Api\\Identity\\V1\xe2\x02*GamingPlatform\\Api\\GPBMetadata\\Identity\\V1b\x06proto3"
+	"\x05email\x18\x03 \x01(\tR\x05email\")\n" +
+	"\vRegisterBot\x12\x1a\n" +
+	"\busername\x18\x01 \x01(\tR\busername\",\n" +
+	"\x13RegisterBotResponse\x12\x15\n" +
+	"\x06bot_id\x18\x01 \x01(\tR\x05botId\".\n" +
+	"\x10GetBotByUsername\x12\x1a\n" +
+	"\busername\x18\x01 \x01(\tR\busername\"Q\n" +
+	"\x18GetBotByUsernameResponse\x125\n" +
+	"\x03bot\x18\x01 \x01(\v2#.gamingplatform.api.identity.v1.BotR\x03bot\"8\n" +
+	"\x03Bot\x12\x15\n" +
+	"\x06bot_id\x18\x01 \x01(\tR\x05botId\x12\x1a\n" +
+	"\busername\x18\x02 \x01(\tR\busernameBfZ\x16identity/v1;identityv1\xca\x02\x1eGamingPlatform\\Api\\Identity\\V1\xe2\x02*GamingPlatform\\Api\\GPBMetadata\\Identity\\V1b\x06proto3"
 
 var (
 	file_gamingplatform_api_identity_v1_messaging_proto_rawDescOnce sync.Once
@@ -149,17 +388,23 @@ func file_gamingplatform_api_identity_v1_messaging_proto_rawDescGZIP() []byte {
 	return file_gamingplatform_api_identity_v1_messaging_proto_rawDescData
 }
 
-var file_gamingplatform_api_identity_v1_messaging_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
+var file_gamingplatform_api_identity_v1_messaging_proto_msgTypes = make([]protoimpl.MessageInfo, 7)
 var file_gamingplatform_api_identity_v1_messaging_proto_goTypes = []any{
-	(*UserArrived)(nil),  // 0: gamingplatform.api.identity.v1.UserArrived
-	(*UserSignedUp)(nil), // 1: gamingplatform.api.identity.v1.UserSignedUp
+	(*UserArrived)(nil),              // 0: gamingplatform.api.identity.v1.UserArrived
+	(*UserSignedUp)(nil),             // 1: gamingplatform.api.identity.v1.UserSignedUp
+	(*RegisterBot)(nil),              // 2: gamingplatform.api.identity.v1.RegisterBot
+	(*RegisterBotResponse)(nil),      // 3: gamingplatform.api.identity.v1.RegisterBotResponse
+	(*GetBotByUsername)(nil),         // 4: gamingplatform.api.identity.v1.GetBotByUsername
+	(*GetBotByUsernameResponse)(nil), // 5: gamingplatform.api.identity.v1.GetBotByUsernameResponse
+	(*Bot)(nil),                      // 6: gamingplatform.api.identity.v1.Bot
 }
 var file_gamingplatform_api_identity_v1_messaging_proto_depIdxs = []int32{
-	0, // [0:0] is the sub-list for method output_type
-	0, // [0:0] is the sub-list for method input_type
-	0, // [0:0] is the sub-list for extension type_name
-	0, // [0:0] is the sub-list for extension extendee
-	0, // [0:0] is the sub-list for field type_name
+	6, // 0: gamingplatform.api.identity.v1.GetBotByUsernameResponse.bot:type_name -> gamingplatform.api.identity.v1.Bot
+	1, // [1:1] is the sub-list for method output_type
+	1, // [1:1] is the sub-list for method input_type
+	1, // [1:1] is the sub-list for extension type_name
+	1, // [1:1] is the sub-list for extension extendee
+	0, // [0:1] is the sub-list for field type_name
 }
 
 func init() { file_gamingplatform_api_identity_v1_messaging_proto_init() }
@@ -173,7 +418,7 @@ func file_gamingplatform_api_identity_v1_messaging_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_gamingplatform_api_identity_v1_messaging_proto_rawDesc), len(file_gamingplatform_api_identity_v1_messaging_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   2,
+			NumMessages:   7,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
