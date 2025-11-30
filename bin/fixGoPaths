@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+set -e
+
+cp -r ./go/github.com/gaming-platform/api/go/* ./go
+rm -rf ./go/github.com

@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package gamingplatform.api.chat.v1;
 
-option go_package = "chat/v1;chatv1";
+option go_package = "github.com/gaming-platform/api/go/chat/v1;chatv1";
 option php_namespace = "GamingPlatform\\Api\\Chat\\V1";
 option php_metadata_namespace = "GamingPlatform\\Api\\GPBMetadata\\Chat\\V1";
 

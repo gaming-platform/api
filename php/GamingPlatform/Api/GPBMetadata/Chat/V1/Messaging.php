@@ -16,7 +16,7 @@ class Messaging
         }
         $pool->internalAddGeneratedFile(
             '
-ª
+Ì
 *gamingplatform/api/chat/v1/messaging.protogamingplatform.api.chat.v1"P
 InitiateChat
 idempotency_key (	
@@ -32,7 +32,7 @@ message_id (	
 	author_id (	
 
 written_at (	
-message (	BVZchat/v1;chatv1ÊGamingPlatform\\Api\\Chat\\V1â&GamingPlatform\\Api\\GPBMetadata\\Chat\\V1bproto3'
+message (	BxZ0github.com/gaming-platform/api/go/chat/v1;chatv1ÊGamingPlatform\\Api\\Chat\\V1â&GamingPlatform\\Api\\GPBMetadata\\Chat\\V1bproto3'
         , true);
 
         static::$is_initialized = true;

@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package gamingplatform.api.common.v1;
+
+option go_package = "github.com/gaming-platform/api/go/common/v1;commonv1";
+option php_namespace = "GamingPlatform\\Api\\Common\\V1";
+option php_metadata_namespace = "GamingPlatform\\Api\\GPBMetadata\\Common\\V1";
+
+message Error {
+  message Violation {
+    message Parameter {
+      string name = 1;
+      oneof value {bool bool_value = 2; int64 int_value = 3; float float_value = 4; string string_value = 5;}
+    }
+    string property_path = 1;
+    string identifier = 2;
+    repeated Parameter parameters = 3;
+  }
+  repeated Violation violations = 1;
+}

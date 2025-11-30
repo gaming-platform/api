@@ -7,6 +7,7 @@
 package identityv1
 
 import (
+	v1 "github.com/gaming-platform/api/go/common/v1"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
@@ -170,8 +171,12 @@ func (x *RegisterBot) GetUsername() string {
 }
 
 type RegisterBotResponse struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	BotId         string                 `protobuf:"bytes,1,opt,name=bot_id,json=botId,proto3" json:"bot_id,omitempty"`
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Types that are valid to be assigned to Result:
+	//
+	//	*RegisterBotResponse_Success_
+	//	*RegisterBotResponse_Error
+	Result        isRegisterBotResponse_Result `protobuf_oneof:"result"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -206,12 +211,46 @@ func (*RegisterBotResponse) Descriptor() ([]byte, []int) {
 	return file_gamingplatform_api_identity_v1_messaging_proto_rawDescGZIP(), []int{3}
 }
 
-func (x *RegisterBotResponse) GetBotId() string {
+func (x *RegisterBotResponse) GetResult() isRegisterBotResponse_Result {
 	if x != nil {
-		return x.BotId
+		return x.Result
 	}
-	return ""
+	return nil
 }
+
+func (x *RegisterBotResponse) GetSuccess() *RegisterBotResponse_Success {
+	if x != nil {
+		if x, ok := x.Result.(*RegisterBotResponse_Success_); ok {
+			return x.Success
+		}
+	}
+	return nil
+}
+
+func (x *RegisterBotResponse) GetError() *v1.Error {
+	if x != nil {
+		if x, ok := x.Result.(*RegisterBotResponse_Error); ok {
+			return x.Error
+		}
+	}
+	return nil
+}
+
+type isRegisterBotResponse_Result interface {
+	isRegisterBotResponse_Result()
+}
+
+type RegisterBotResponse_Success_ struct {
+	Success *RegisterBotResponse_Success `protobuf:"bytes,1,opt,name=success,proto3,oneof"`
+}
+
+type RegisterBotResponse_Error struct {
+	Error *v1.Error `protobuf:"bytes,2,opt,name=error,proto3,oneof"`
+}
+
+func (*RegisterBotResponse_Success_) isRegisterBotResponse_Result() {}
+
+func (*RegisterBotResponse_Error) isRegisterBotResponse_Result() {}
 
 type GetBotByUsername struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
@@ -258,8 +297,12 @@ func (x *GetBotByUsername) GetUsername() string {
 }
 
 type GetBotByUsernameResponse struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Bot           *Bot                   `protobuf:"bytes,1,opt,name=bot,proto3" json:"bot,omitempty"`
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Types that are valid to be assigned to Result:
+	//
+	//	*GetBotByUsernameResponse_Success_
+	//	*GetBotByUsernameResponse_Error
+	Result        isGetBotByUsernameResponse_Result `protobuf_oneof:"result"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -294,12 +337,46 @@ func (*GetBotByUsernameResponse) Descriptor() ([]byte, []int) {
 	return file_gamingplatform_api_identity_v1_messaging_proto_rawDescGZIP(), []int{5}
 }
 
-func (x *GetBotByUsernameResponse) GetBot() *Bot {
+func (x *GetBotByUsernameResponse) GetResult() isGetBotByUsernameResponse_Result {
 	if x != nil {
-		return x.Bot
+		return x.Result
 	}
 	return nil
 }
+
+func (x *GetBotByUsernameResponse) GetSuccess() *GetBotByUsernameResponse_Success {
+	if x != nil {
+		if x, ok := x.Result.(*GetBotByUsernameResponse_Success_); ok {
+			return x.Success
+		}
+	}
+	return nil
+}
+
+func (x *GetBotByUsernameResponse) GetError() *v1.Error {
+	if x != nil {
+		if x, ok := x.Result.(*GetBotByUsernameResponse_Error); ok {
+			return x.Error
+		}
+	}
+	return nil
+}
+
+type isGetBotByUsernameResponse_Result interface {
+	isGetBotByUsernameResponse_Result()
+}
+
+type GetBotByUsernameResponse_Success_ struct {
+	Success *GetBotByUsernameResponse_Success `protobuf:"bytes,1,opt,name=success,proto3,oneof"`
+}
+
+type GetBotByUsernameResponse_Error struct {
+	Error *v1.Error `protobuf:"bytes,2,opt,name=error,proto3,oneof"`
+}
+
+func (*GetBotByUsernameResponse_Success_) isGetBotByUsernameResponse_Result() {}
+
+func (*GetBotByUsernameResponse_Error) isGetBotByUsernameResponse_Result() {}
 
 type Bot struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
@@ -353,11 +430,99 @@ func (x *Bot) GetUsername() string {
 	return ""
 }
 
+type RegisterBotResponse_Success struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	BotId         string                 `protobuf:"bytes,1,opt,name=bot_id,json=botId,proto3" json:"bot_id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *RegisterBotResponse_Success) Reset() {
+	*x = RegisterBotResponse_Success{}
+	mi := &file_gamingplatform_api_identity_v1_messaging_proto_msgTypes[7]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *RegisterBotResponse_Success) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*RegisterBotResponse_Success) ProtoMessage() {}
+
+func (x *RegisterBotResponse_Success) ProtoReflect() protoreflect.Message {
+	mi := &file_gamingplatform_api_identity_v1_messaging_proto_msgTypes[7]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use RegisterBotResponse_Success.ProtoReflect.Descriptor instead.
+func (*RegisterBotResponse_Success) Descriptor() ([]byte, []int) {
+	return file_gamingplatform_api_identity_v1_messaging_proto_rawDescGZIP(), []int{3, 0}
+}
+
+func (x *RegisterBotResponse_Success) GetBotId() string {
+	if x != nil {
+		return x.BotId
+	}
+	return ""
+}
+
+type GetBotByUsernameResponse_Success struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Bot           *Bot                   `protobuf:"bytes,1,opt,name=bot,proto3" json:"bot,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetBotByUsernameResponse_Success) Reset() {
+	*x = GetBotByUsernameResponse_Success{}
+	mi := &file_gamingplatform_api_identity_v1_messaging_proto_msgTypes[8]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetBotByUsernameResponse_Success) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetBotByUsernameResponse_Success) ProtoMessage() {}
+
+func (x *GetBotByUsernameResponse_Success) ProtoReflect() protoreflect.Message {
+	mi := &file_gamingplatform_api_identity_v1_messaging_proto_msgTypes[8]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetBotByUsernameResponse_Success.ProtoReflect.Descriptor instead.
+func (*GetBotByUsernameResponse_Success) Descriptor() ([]byte, []int) {
+	return file_gamingplatform_api_identity_v1_messaging_proto_rawDescGZIP(), []int{5, 0}
+}
+
+func (x *GetBotByUsernameResponse_Success) GetBot() *Bot {
+	if x != nil {
+		return x.Bot
+	}
+	return nil
+}
+
 var File_gamingplatform_api_identity_v1_messaging_proto protoreflect.FileDescriptor
 
 const file_gamingplatform_api_identity_v1_messaging_proto_rawDesc = "" +
 	"\n" +
-	".gamingplatform/api/identity/v1/messaging.proto\x12\x1egamingplatform.api.identity.v1\"&\n" +
+	".gamingplatform/api/identity/v1/messaging.proto\x12\x1egamingplatform.api.identity.v1\x1a,gamingplatform/api/common/v1/messaging.proto\"&\n" +
 	"\vUserArrived\x12\x17\n" +
 	"\auser_id\x18\x01 \x01(\tR\x06userId\"Y\n" +
 	"\fUserSignedUp\x12\x17\n" +
@@ -365,16 +530,24 @@ const file_gamingplatform_api_identity_v1_messaging_proto_rawDesc = "" +
 	"\busername\x18\x02 \x01(\tR\busername\x12\x14\n" +
 	"\x05email\x18\x03 \x01(\tR\x05email\")\n" +
 	"\vRegisterBot\x12\x1a\n" +
-	"\busername\x18\x01 \x01(\tR\busername\",\n" +
-	"\x13RegisterBotResponse\x12\x15\n" +
-	"\x06bot_id\x18\x01 \x01(\tR\x05botId\".\n" +
+	"\busername\x18\x01 \x01(\tR\busername\"\xd7\x01\n" +
+	"\x13RegisterBotResponse\x12W\n" +
+	"\asuccess\x18\x01 \x01(\v2;.gamingplatform.api.identity.v1.RegisterBotResponse.SuccessH\x00R\asuccess\x12;\n" +
+	"\x05error\x18\x02 \x01(\v2#.gamingplatform.api.common.v1.ErrorH\x00R\x05error\x1a \n" +
+	"\aSuccess\x12\x15\n" +
+	"\x06bot_id\x18\x01 \x01(\tR\x05botIdB\b\n" +
+	"\x06result\".\n" +
 	"\x10GetBotByUsername\x12\x1a\n" +
-	"\busername\x18\x01 \x01(\tR\busername\"Q\n" +
-	"\x18GetBotByUsernameResponse\x125\n" +
-	"\x03bot\x18\x01 \x01(\v2#.gamingplatform.api.identity.v1.BotR\x03bot\"8\n" +
+	"\busername\x18\x01 \x01(\tR\busername\"\x81\x02\n" +
+	"\x18GetBotByUsernameResponse\x12\\\n" +
+	"\asuccess\x18\x01 \x01(\v2@.gamingplatform.api.identity.v1.GetBotByUsernameResponse.SuccessH\x00R\asuccess\x12;\n" +
+	"\x05error\x18\x02 \x01(\v2#.gamingplatform.api.common.v1.ErrorH\x00R\x05error\x1a@\n" +
+	"\aSuccess\x125\n" +
+	"\x03bot\x18\x01 \x01(\v2#.gamingplatform.api.identity.v1.BotR\x03botB\b\n" +
+	"\x06result\"8\n" +
 	"\x03Bot\x12\x15\n" +
 	"\x06bot_id\x18\x01 \x01(\tR\x05botId\x12\x1a\n" +
-	"\busername\x18\x02 \x01(\tR\busernameBfZ\x16identity/v1;identityv1\xca\x02\x1eGamingPlatform\\Api\\Identity\\V1\xe2\x02*GamingPlatform\\Api\\GPBMetadata\\Identity\\V1b\x06proto3"
+	"\busername\x18\x02 \x01(\tR\busernameB\x88\x01Z8github.com/gaming-platform/api/go/identity/v1;identityv1\xca\x02\x1eGamingPlatform\\Api\\Identity\\V1\xe2\x02*GamingPlatform\\Api\\GPBMetadata\\Identity\\V1b\x06proto3"
 
 var (
 	file_gamingplatform_api_identity_v1_messaging_proto_rawDescOnce sync.Once
@@ -388,23 +561,30 @@ func file_gamingplatform_api_identity_v1_messaging_proto_rawDescGZIP() []byte {
 	return file_gamingplatform_api_identity_v1_messaging_proto_rawDescData
 }
 
-var file_gamingplatform_api_identity_v1_messaging_proto_msgTypes = make([]protoimpl.MessageInfo, 7)
+var file_gamingplatform_api_identity_v1_messaging_proto_msgTypes = make([]protoimpl.MessageInfo, 9)
 var file_gamingplatform_api_identity_v1_messaging_proto_goTypes = []any{
-	(*UserArrived)(nil),              // 0: gamingplatform.api.identity.v1.UserArrived
-	(*UserSignedUp)(nil),             // 1: gamingplatform.api.identity.v1.UserSignedUp
-	(*RegisterBot)(nil),              // 2: gamingplatform.api.identity.v1.RegisterBot
-	(*RegisterBotResponse)(nil),      // 3: gamingplatform.api.identity.v1.RegisterBotResponse
-	(*GetBotByUsername)(nil),         // 4: gamingplatform.api.identity.v1.GetBotByUsername
-	(*GetBotByUsernameResponse)(nil), // 5: gamingplatform.api.identity.v1.GetBotByUsernameResponse
-	(*Bot)(nil),                      // 6: gamingplatform.api.identity.v1.Bot
+	(*UserArrived)(nil),                      // 0: gamingplatform.api.identity.v1.UserArrived
+	(*UserSignedUp)(nil),                     // 1: gamingplatform.api.identity.v1.UserSignedUp
+	(*RegisterBot)(nil),                      // 2: gamingplatform.api.identity.v1.RegisterBot
+	(*RegisterBotResponse)(nil),              // 3: gamingplatform.api.identity.v1.RegisterBotResponse
+	(*GetBotByUsername)(nil),                 // 4: gamingplatform.api.identity.v1.GetBotByUsername
+	(*GetBotByUsernameResponse)(nil),         // 5: gamingplatform.api.identity.v1.GetBotByUsernameResponse
+	(*Bot)(nil),                              // 6: gamingplatform.api.identity.v1.Bot
+	(*RegisterBotResponse_Success)(nil),      // 7: gamingplatform.api.identity.v1.RegisterBotResponse.Success
+	(*GetBotByUsernameResponse_Success)(nil), // 8: gamingplatform.api.identity.v1.GetBotByUsernameResponse.Success
+	(*v1.Error)(nil),                         // 9: gamingplatform.api.common.v1.Error
 }
 var file_gamingplatform_api_identity_v1_messaging_proto_depIdxs = []int32{
-	6, // 0: gamingplatform.api.identity.v1.GetBotByUsernameResponse.bot:type_name -> gamingplatform.api.identity.v1.Bot
-	1, // [1:1] is the sub-list for method output_type
-	1, // [1:1] is the sub-list for method input_type
-	1, // [1:1] is the sub-list for extension type_name
-	1, // [1:1] is the sub-list for extension extendee
-	0, // [0:1] is the sub-list for field type_name
+	7, // 0: gamingplatform.api.identity.v1.RegisterBotResponse.success:type_name -> gamingplatform.api.identity.v1.RegisterBotResponse.Success
+	9, // 1: gamingplatform.api.identity.v1.RegisterBotResponse.error:type_name -> gamingplatform.api.common.v1.Error
+	8, // 2: gamingplatform.api.identity.v1.GetBotByUsernameResponse.success:type_name -> gamingplatform.api.identity.v1.GetBotByUsernameResponse.Success
+	9, // 3: gamingplatform.api.identity.v1.GetBotByUsernameResponse.error:type_name -> gamingplatform.api.common.v1.Error
+	6, // 4: gamingplatform.api.identity.v1.GetBotByUsernameResponse.Success.bot:type_name -> gamingplatform.api.identity.v1.Bot
+	5, // [5:5] is the sub-list for method output_type
+	5, // [5:5] is the sub-list for method input_type
+	5, // [5:5] is the sub-list for extension type_name
+	5, // [5:5] is the sub-list for extension extendee
+	0, // [0:5] is the sub-list for field type_name
 }
 
 func init() { file_gamingplatform_api_identity_v1_messaging_proto_init() }
@@ -412,13 +592,21 @@ func file_gamingplatform_api_identity_v1_messaging_proto_init() {
 	if File_gamingplatform_api_identity_v1_messaging_proto != nil {
 		return
 	}
+	file_gamingplatform_api_identity_v1_messaging_proto_msgTypes[3].OneofWrappers = []any{
+		(*RegisterBotResponse_Success_)(nil),
+		(*RegisterBotResponse_Error)(nil),
+	}
+	file_gamingplatform_api_identity_v1_messaging_proto_msgTypes[5].OneofWrappers = []any{
+		(*GetBotByUsernameResponse_Success_)(nil),
+		(*GetBotByUsernameResponse_Error)(nil),
+	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_gamingplatform_api_identity_v1_messaging_proto_rawDesc), len(file_gamingplatform_api_identity_v1_messaging_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   7,
+			NumMessages:   9,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

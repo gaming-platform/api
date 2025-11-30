@@ -2,7 +2,9 @@ syntax = "proto3";
 
 package gamingplatform.api.identity.v1;
 
-option go_package = "identity/v1;identityv1";
+import "gamingplatform/api/common/v1/messaging.proto";
+
+option go_package = "github.com/gaming-platform/api/go/identity/v1;identityv1";
 option php_namespace = "GamingPlatform\\Api\\Identity\\V1";
 option php_metadata_namespace = "GamingPlatform\\Api\\GPBMetadata\\Identity\\V1";
 
@@ -21,7 +23,8 @@ message RegisterBot {
 }
 
 message RegisterBotResponse {
-  string bot_id = 1;
+  message Success {string bot_id = 1;}
+  oneof result {Success success = 1; gamingplatform.api.common.v1.Error error = 2;}
 }
 
 message GetBotByUsername {
@@ -29,7 +32,8 @@ message GetBotByUsername {
 }
 
 message GetBotByUsernameResponse {
-  Bot bot = 1;
+  message Success {Bot bot = 1;}
+  oneof result {Success success = 1; gamingplatform.api.common.v1.Error error = 2;}
 }
 
 message Bot {

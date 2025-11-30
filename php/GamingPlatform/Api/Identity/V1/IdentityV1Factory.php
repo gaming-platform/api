@@ -28,6 +28,16 @@ final class IdentityV1Factory
         return $message;
     }
 
+    public static function createGetBotByUsernameResponse_Success(
+        string $data
+    ): \GamingPlatform\Api\Identity\V1\GetBotByUsernameResponse\Success {
+        static $template;
+        $template ??= new \GamingPlatform\Api\Identity\V1\GetBotByUsernameResponse\Success();
+        $message = clone $template;
+        $message->mergeFromString($data);
+        return $message;
+    }
+
     public static function createGetBotByUsernameResponse(
         string $data
     ): \GamingPlatform\Api\Identity\V1\GetBotByUsernameResponse {
@@ -43,6 +53,16 @@ final class IdentityV1Factory
     ): \GamingPlatform\Api\Identity\V1\RegisterBot {
         static $template;
         $template ??= new \GamingPlatform\Api\Identity\V1\RegisterBot();
+        $message = clone $template;
+        $message->mergeFromString($data);
+        return $message;
+    }
+
+    public static function createRegisterBotResponse_Success(
+        string $data
+    ): \GamingPlatform\Api\Identity\V1\RegisterBotResponse\Success {
+        static $template;
+        $template ??= new \GamingPlatform\Api\Identity\V1\RegisterBotResponse\Success();
         $message = clone $template;
         $message->mergeFromString($data);
         return $message;

@@ -19,6 +19,7 @@ protoc() {
         -v $(pwd):/project \
         ghcr.io/gaming-platform/docker-php-fpm:8.3-development \
         /project/bin/generatePhpFactories
+    docker compose run --rm protoc /project/bin/fixGoPaths
 }
 
 if [ "$*" = "" ]
