@@ -2,5 +2,7 @@
 
 set -e
 
+# Go files are generated into their full module path.
+# This script moves the files to the correct location.
 cp -r ./go/github.com/gaming-platform/api/go/* ./go
 rm -rf ./go/github.com
