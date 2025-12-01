@@ -17,7 +17,10 @@ class Parameter extends \Google\Protobuf\Internal\Message
      * Generated from protobuf field <code>string name = 1;</code>
      */
     protected $name = '';
-    protected $value;
+    /**
+     * Generated from protobuf field <code>string value = 2;</code>
+     */
+    protected $value = '';
 
     /**
      * Constructor.
@@ -26,10 +29,7 @@ class Parameter extends \Google\Protobuf\Internal\Message
      *     Optional. Data for populating the Message object.
      *
      *     @type string $name
-     *     @type bool $bool_value
-     *     @type int|string $int_value
-     *     @type float $float_value
-     *     @type string $string_value
+     *     @type string $value
      * }
      */
     public function __construct($data = NULL) {
@@ -60,119 +60,25 @@ class Parameter extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>bool bool_value = 2;</code>
-     * @return bool
-     */
-    public function getBoolValue()
-    {
-        return $this->readOneof(2);
-    }
-
-    public function hasBoolValue()
-    {
-        return $this->hasOneof(2);
-    }
-
-    /**
-     * Generated from protobuf field <code>bool bool_value = 2;</code>
-     * @param bool $var
-     * @return $this
-     */
-    public function setBoolValue($var)
-    {
-        GPBUtil::checkBool($var);
-        $this->writeOneof(2, $var);
-
-        return $this;
-    }
-
-    /**
-     * Generated from protobuf field <code>int64 int_value = 3;</code>
-     * @return int|string
-     */
-    public function getIntValue()
-    {
-        return $this->readOneof(3);
-    }
-
-    public function hasIntValue()
-    {
-        return $this->hasOneof(3);
-    }
-
-    /**
-     * Generated from protobuf field <code>int64 int_value = 3;</code>
-     * @param int|string $var
-     * @return $this
-     */
-    public function setIntValue($var)
-    {
-        GPBUtil::checkInt64($var);
-        $this->writeOneof(3, $var);
-
-        return $this;
-    }
-
-    /**
-     * Generated from protobuf field <code>float float_value = 4;</code>
-     * @return float
-     */
-    public function getFloatValue()
-    {
-        return $this->readOneof(4);
-    }
-
-    public function hasFloatValue()
-    {
-        return $this->hasOneof(4);
-    }
-
-    /**
-     * Generated from protobuf field <code>float float_value = 4;</code>
-     * @param float $var
-     * @return $this
-     */
-    public function setFloatValue($var)
-    {
-        GPBUtil::checkFloat($var);
-        $this->writeOneof(4, $var);
-
-        return $this;
-    }
-
-    /**
-     * Generated from protobuf field <code>string string_value = 5;</code>
-     * @return string
-     */
-    public function getStringValue()
-    {
-        return $this->readOneof(5);
-    }
-
-    public function hasStringValue()
-    {
-        return $this->hasOneof(5);
-    }
-
-    /**
-     * Generated from protobuf field <code>string string_value = 5;</code>
-     * @param string $var
-     * @return $this
-     */
-    public function setStringValue($var)
-    {
-        GPBUtil::checkString($var, True);
-        $this->writeOneof(5, $var);
-
-        return $this;
-    }
-
-    /**
+     * Generated from protobuf field <code>string value = 2;</code>
      * @return string
      */
     public function getValue()
     {
-        return $this->whichOneof("value");
+        return $this->value;
+    }
+
+    /**
+     * Generated from protobuf field <code>string value = 2;</code>
+     * @param string $var
+     * @return $this
+     */
+    public function setValue($var)
+    {
+        GPBUtil::checkString($var, True);
+        $this->value = $var;
+
+        return $this;
     }
 
 }

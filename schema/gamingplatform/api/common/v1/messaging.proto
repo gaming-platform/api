@@ -10,7 +10,7 @@ message ErrorResponse {
   message Violation {
     message Parameter {
       string name = 1;
-      oneof value {bool bool_value = 2; int64 int_value = 3; float float_value = 4; string string_value = 5;}
+      string value = 2;
     }
     string property_path = 1;
     string identifier = 2;
