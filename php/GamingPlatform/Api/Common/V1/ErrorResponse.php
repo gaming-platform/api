@@ -9,12 +9,12 @@ use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
 
 /**
- * Generated from protobuf message <code>gamingplatform.api.common.v1.Error</code>
+ * Generated from protobuf message <code>gamingplatform.api.common.v1.ErrorResponse</code>
  */
-class Error extends \Google\Protobuf\Internal\Message
+class ErrorResponse extends \Google\Protobuf\Internal\Message
 {
     /**
-     * Generated from protobuf field <code>repeated .gamingplatform.api.common.v1.Error.Violation violations = 1;</code>
+     * Generated from protobuf field <code>repeated .gamingplatform.api.common.v1.ErrorResponse.Violation violations = 1;</code>
      */
     private $violations;
 
@@ -24,7 +24,7 @@ class Error extends \Google\Protobuf\Internal\Message
      * @param array $data {
      *     Optional. Data for populating the Message object.
      *
-     *     @type array<\GamingPlatform\Api\Common\V1\Error\Violation>|\Google\Protobuf\Internal\RepeatedField $violations
+     *     @type array<\GamingPlatform\Api\Common\V1\ErrorResponse\Violation>|\Google\Protobuf\Internal\RepeatedField $violations
      * }
      */
     public function __construct($data = NULL) {
@@ -33,7 +33,7 @@ class Error extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>repeated .gamingplatform.api.common.v1.Error.Violation violations = 1;</code>
+     * Generated from protobuf field <code>repeated .gamingplatform.api.common.v1.ErrorResponse.Violation violations = 1;</code>
      * @return \Google\Protobuf\Internal\RepeatedField
      */
     public function getViolations()
@@ -42,13 +42,13 @@ class Error extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>repeated .gamingplatform.api.common.v1.Error.Violation violations = 1;</code>
-     * @param array<\GamingPlatform\Api\Common\V1\Error\Violation>|\Google\Protobuf\Internal\RepeatedField $var
+     * Generated from protobuf field <code>repeated .gamingplatform.api.common.v1.ErrorResponse.Violation violations = 1;</code>
+     * @param array<\GamingPlatform\Api\Common\V1\ErrorResponse\Violation>|\Google\Protobuf\Internal\RepeatedField $var
      * @return $this
      */
     public function setViolations($var)
     {
-        $arr = GPBUtil::checkRepeatedField($var, \Google\Protobuf\Internal\GPBType::MESSAGE, \GamingPlatform\Api\Common\V1\Error\Violation::class);
+        $arr = GPBUtil::checkRepeatedField($var, \Google\Protobuf\Internal\GPBType::MESSAGE, \GamingPlatform\Api\Common\V1\ErrorResponse\Violation::class);
         $this->violations = $arr;
 
         return $this;

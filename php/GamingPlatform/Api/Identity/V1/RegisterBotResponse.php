@@ -13,7 +13,10 @@ use Google\Protobuf\Internal\GPBUtil;
  */
 class RegisterBotResponse extends \Google\Protobuf\Internal\Message
 {
-    protected $result;
+    /**
+     * Generated from protobuf field <code>string bot_id = 1;</code>
+     */
+    protected $bot_id = '';
 
     /**
      * Constructor.
@@ -21,8 +24,7 @@ class RegisterBotResponse extends \Google\Protobuf\Internal\Message
      * @param array $data {
      *     Optional. Data for populating the Message object.
      *
-     *     @type \GamingPlatform\Api\Identity\V1\RegisterBotResponse\Success $success
-     *     @type \GamingPlatform\Api\Common\V1\Error $error
+     *     @type string $bot_id
      * }
      */
     public function __construct($data = NULL) {
@@ -31,65 +33,25 @@ class RegisterBotResponse extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>.gamingplatform.api.identity.v1.RegisterBotResponse.Success success = 1;</code>
-     * @return \GamingPlatform\Api\Identity\V1\RegisterBotResponse\Success|null
-     */
-    public function getSuccess()
-    {
-        return $this->readOneof(1);
-    }
-
-    public function hasSuccess()
-    {
-        return $this->hasOneof(1);
-    }
-
-    /**
-     * Generated from protobuf field <code>.gamingplatform.api.identity.v1.RegisterBotResponse.Success success = 1;</code>
-     * @param \GamingPlatform\Api\Identity\V1\RegisterBotResponse\Success $var
-     * @return $this
-     */
-    public function setSuccess($var)
-    {
-        GPBUtil::checkMessage($var, \GamingPlatform\Api\Identity\V1\RegisterBotResponse\Success::class);
-        $this->writeOneof(1, $var);
-
-        return $this;
-    }
-
-    /**
-     * Generated from protobuf field <code>.gamingplatform.api.common.v1.Error error = 2;</code>
-     * @return \GamingPlatform\Api\Common\V1\Error|null
-     */
-    public function getError()
-    {
-        return $this->readOneof(2);
-    }
-
-    public function hasError()
-    {
-        return $this->hasOneof(2);
-    }
-
-    /**
-     * Generated from protobuf field <code>.gamingplatform.api.common.v1.Error error = 2;</code>
-     * @param \GamingPlatform\Api\Common\V1\Error $var
-     * @return $this
-     */
-    public function setError($var)
-    {
-        GPBUtil::checkMessage($var, \GamingPlatform\Api\Common\V1\Error::class);
-        $this->writeOneof(2, $var);
-
-        return $this;
-    }
-
-    /**
+     * Generated from protobuf field <code>string bot_id = 1;</code>
      * @return string
      */
-    public function getResult()
+    public function getBotId()
     {
-        return $this->whichOneof("result");
+        return $this->bot_id;
+    }
+
+    /**
+     * Generated from protobuf field <code>string bot_id = 1;</code>
+     * @param string $var
+     * @return $this
+     */
+    public function setBotId($var)
+    {
+        GPBUtil::checkString($var, True);
+        $this->bot_id = $var;
+
+        return $this;
     }
 
 }

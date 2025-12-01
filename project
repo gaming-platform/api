@@ -13,6 +13,7 @@ help() {
 }
 
 protoc() {
+    rm -rf ./go/* ./php/*
     docker compose run --rm protoc
     docker run \
         --rm \

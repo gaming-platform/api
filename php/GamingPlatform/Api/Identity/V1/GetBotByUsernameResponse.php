@@ -13,7 +13,10 @@ use Google\Protobuf\Internal\GPBUtil;
  */
 class GetBotByUsernameResponse extends \Google\Protobuf\Internal\Message
 {
-    protected $result;
+    /**
+     * Generated from protobuf field <code>.gamingplatform.api.identity.v1.Bot bot = 1;</code>
+     */
+    protected $bot = null;
 
     /**
      * Constructor.
@@ -21,8 +24,7 @@ class GetBotByUsernameResponse extends \Google\Protobuf\Internal\Message
      * @param array $data {
      *     Optional. Data for populating the Message object.
      *
-     *     @type \GamingPlatform\Api\Identity\V1\GetBotByUsernameResponse\Success $success
-     *     @type \GamingPlatform\Api\Common\V1\Error $error
+     *     @type \GamingPlatform\Api\Identity\V1\Bot $bot
      * }
      */
     public function __construct($data = NULL) {
@@ -31,65 +33,35 @@ class GetBotByUsernameResponse extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>.gamingplatform.api.identity.v1.GetBotByUsernameResponse.Success success = 1;</code>
-     * @return \GamingPlatform\Api\Identity\V1\GetBotByUsernameResponse\Success|null
+     * Generated from protobuf field <code>.gamingplatform.api.identity.v1.Bot bot = 1;</code>
+     * @return \GamingPlatform\Api\Identity\V1\Bot|null
      */
-    public function getSuccess()
+    public function getBot()
     {
-        return $this->readOneof(1);
+        return $this->bot;
     }
 
-    public function hasSuccess()
+    public function hasBot()
     {
-        return $this->hasOneof(1);
+        return isset($this->bot);
+    }
+
+    public function clearBot()
+    {
+        unset($this->bot);
     }
 
     /**
-     * Generated from protobuf field <code>.gamingplatform.api.identity.v1.GetBotByUsernameResponse.Success success = 1;</code>
-     * @param \GamingPlatform\Api\Identity\V1\GetBotByUsernameResponse\Success $var
+     * Generated from protobuf field <code>.gamingplatform.api.identity.v1.Bot bot = 1;</code>
+     * @param \GamingPlatform\Api\Identity\V1\Bot $var
      * @return $this
      */
-    public function setSuccess($var)
+    public function setBot($var)
     {
-        GPBUtil::checkMessage($var, \GamingPlatform\Api\Identity\V1\GetBotByUsernameResponse\Success::class);
-        $this->writeOneof(1, $var);
+        GPBUtil::checkMessage($var, \GamingPlatform\Api\Identity\V1\Bot::class);
+        $this->bot = $var;
 
         return $this;
-    }
-
-    /**
-     * Generated from protobuf field <code>.gamingplatform.api.common.v1.Error error = 2;</code>
-     * @return \GamingPlatform\Api\Common\V1\Error|null
-     */
-    public function getError()
-    {
-        return $this->readOneof(2);
-    }
-
-    public function hasError()
-    {
-        return $this->hasOneof(2);
-    }
-
-    /**
-     * Generated from protobuf field <code>.gamingplatform.api.common.v1.Error error = 2;</code>
-     * @param \GamingPlatform\Api\Common\V1\Error $var
-     * @return $this
-     */
-    public function setError($var)
-    {
-        GPBUtil::checkMessage($var, \GamingPlatform\Api\Common\V1\Error::class);
-        $this->writeOneof(2, $var);
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getResult()
-    {
-        return $this->whichOneof("result");
     }
 
 }

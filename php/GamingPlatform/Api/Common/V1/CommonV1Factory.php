@@ -8,31 +8,31 @@ namespace GamingPlatform\Api\Common\V1;
 
 final class CommonV1Factory
 {
-    public static function createError_Violation_Parameter(
+    public static function createErrorResponse_Violation_Parameter(
         string $data
-    ): \GamingPlatform\Api\Common\V1\Error\Violation\Parameter {
+    ): \GamingPlatform\Api\Common\V1\ErrorResponse\Violation\Parameter {
         static $template;
-        $template ??= new \GamingPlatform\Api\Common\V1\Error\Violation\Parameter();
+        $template ??= new \GamingPlatform\Api\Common\V1\ErrorResponse\Violation\Parameter();
         $message = clone $template;
         $message->mergeFromString($data);
         return $message;
     }
 
-    public static function createError_Violation(
+    public static function createErrorResponse_Violation(
         string $data
-    ): \GamingPlatform\Api\Common\V1\Error\Violation {
+    ): \GamingPlatform\Api\Common\V1\ErrorResponse\Violation {
         static $template;
-        $template ??= new \GamingPlatform\Api\Common\V1\Error\Violation();
+        $template ??= new \GamingPlatform\Api\Common\V1\ErrorResponse\Violation();
         $message = clone $template;
         $message->mergeFromString($data);
         return $message;
     }
 
-    public static function createError(
+    public static function createErrorResponse(
         string $data
-    ): \GamingPlatform\Api\Common\V1\Error {
+    ): \GamingPlatform\Api\Common\V1\ErrorResponse {
         static $template;
-        $template ??= new \GamingPlatform\Api\Common\V1\Error();
+        $template ??= new \GamingPlatform\Api\Common\V1\ErrorResponse();
         $message = clone $template;
         $message->mergeFromString($data);
         return $message;

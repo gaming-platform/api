@@ -6,7 +6,7 @@ option go_package = "github.com/gaming-platform/api/go/common/v1;commonv1";
 option php_namespace = "GamingPlatform\\Api\\Common\\V1";
 option php_metadata_namespace = "GamingPlatform\\Api\\GPBMetadata\\Common\\V1";
 
-message Error {
+message ErrorResponse {
   message Violation {
     message Parameter {
       string name = 1;

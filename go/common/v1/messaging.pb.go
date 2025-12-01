@@ -21,27 +21,27 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-type Error struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Violations    []*Error_Violation     `protobuf:"bytes,1,rep,name=violations,proto3" json:"violations,omitempty"`
+type ErrorResponse struct {
+	state         protoimpl.MessageState     `protogen:"open.v1"`
+	Violations    []*ErrorResponse_Violation `protobuf:"bytes,1,rep,name=violations,proto3" json:"violations,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *Error) Reset() {
-	*x = Error{}
+func (x *ErrorResponse) Reset() {
+	*x = ErrorResponse{}
 	mi := &file_gamingplatform_api_common_v1_messaging_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *Error) String() string {
+func (x *ErrorResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*Error) ProtoMessage() {}
+func (*ErrorResponse) ProtoMessage() {}
 
-func (x *Error) ProtoReflect() protoreflect.Message {
+func (x *ErrorResponse) ProtoReflect() protoreflect.Message {
 	mi := &file_gamingplatform_api_common_v1_messaging_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -53,41 +53,41 @@ func (x *Error) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use Error.ProtoReflect.Descriptor instead.
-func (*Error) Descriptor() ([]byte, []int) {
+// Deprecated: Use ErrorResponse.ProtoReflect.Descriptor instead.
+func (*ErrorResponse) Descriptor() ([]byte, []int) {
 	return file_gamingplatform_api_common_v1_messaging_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *Error) GetViolations() []*Error_Violation {
+func (x *ErrorResponse) GetViolations() []*ErrorResponse_Violation {
 	if x != nil {
 		return x.Violations
 	}
 	return nil
 }
 
-type Error_Violation struct {
-	state         protoimpl.MessageState       `protogen:"open.v1"`
-	PropertyPath  string                       `protobuf:"bytes,1,opt,name=property_path,json=propertyPath,proto3" json:"property_path,omitempty"`
-	Identifier    string                       `protobuf:"bytes,2,opt,name=identifier,proto3" json:"identifier,omitempty"`
-	Parameters    []*Error_Violation_Parameter `protobuf:"bytes,3,rep,name=parameters,proto3" json:"parameters,omitempty"`
+type ErrorResponse_Violation struct {
+	state         protoimpl.MessageState               `protogen:"open.v1"`
+	PropertyPath  string                               `protobuf:"bytes,1,opt,name=property_path,json=propertyPath,proto3" json:"property_path,omitempty"`
+	Identifier    string                               `protobuf:"bytes,2,opt,name=identifier,proto3" json:"identifier,omitempty"`
+	Parameters    []*ErrorResponse_Violation_Parameter `protobuf:"bytes,3,rep,name=parameters,proto3" json:"parameters,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *Error_Violation) Reset() {
-	*x = Error_Violation{}
+func (x *ErrorResponse_Violation) Reset() {
+	*x = ErrorResponse_Violation{}
 	mi := &file_gamingplatform_api_common_v1_messaging_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *Error_Violation) String() string {
+func (x *ErrorResponse_Violation) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*Error_Violation) ProtoMessage() {}
+func (*ErrorResponse_Violation) ProtoMessage() {}
 
-func (x *Error_Violation) ProtoReflect() protoreflect.Message {
+func (x *ErrorResponse_Violation) ProtoReflect() protoreflect.Message {
 	mi := &file_gamingplatform_api_common_v1_messaging_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -99,60 +99,60 @@ func (x *Error_Violation) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use Error_Violation.ProtoReflect.Descriptor instead.
-func (*Error_Violation) Descriptor() ([]byte, []int) {
+// Deprecated: Use ErrorResponse_Violation.ProtoReflect.Descriptor instead.
+func (*ErrorResponse_Violation) Descriptor() ([]byte, []int) {
 	return file_gamingplatform_api_common_v1_messaging_proto_rawDescGZIP(), []int{0, 0}
 }
 
-func (x *Error_Violation) GetPropertyPath() string {
+func (x *ErrorResponse_Violation) GetPropertyPath() string {
 	if x != nil {
 		return x.PropertyPath
 	}
 	return ""
 }
 
-func (x *Error_Violation) GetIdentifier() string {
+func (x *ErrorResponse_Violation) GetIdentifier() string {
 	if x != nil {
 		return x.Identifier
 	}
 	return ""
 }
 
-func (x *Error_Violation) GetParameters() []*Error_Violation_Parameter {
+func (x *ErrorResponse_Violation) GetParameters() []*ErrorResponse_Violation_Parameter {
 	if x != nil {
 		return x.Parameters
 	}
 	return nil
 }
 
-type Error_Violation_Parameter struct {
+type ErrorResponse_Violation_Parameter struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	Name  string                 `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	// Types that are valid to be assigned to Value:
 	//
-	//	*Error_Violation_Parameter_BoolValue
-	//	*Error_Violation_Parameter_IntValue
-	//	*Error_Violation_Parameter_FloatValue
-	//	*Error_Violation_Parameter_StringValue
-	Value         isError_Violation_Parameter_Value `protobuf_oneof:"value"`
+	//	*ErrorResponse_Violation_Parameter_BoolValue
+	//	*ErrorResponse_Violation_Parameter_IntValue
+	//	*ErrorResponse_Violation_Parameter_FloatValue
+	//	*ErrorResponse_Violation_Parameter_StringValue
+	Value         isErrorResponse_Violation_Parameter_Value `protobuf_oneof:"value"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *Error_Violation_Parameter) Reset() {
-	*x = Error_Violation_Parameter{}
+func (x *ErrorResponse_Violation_Parameter) Reset() {
+	*x = ErrorResponse_Violation_Parameter{}
 	mi := &file_gamingplatform_api_common_v1_messaging_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *Error_Violation_Parameter) String() string {
+func (x *ErrorResponse_Violation_Parameter) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*Error_Violation_Parameter) ProtoMessage() {}
+func (*ErrorResponse_Violation_Parameter) ProtoMessage() {}
 
-func (x *Error_Violation_Parameter) ProtoReflect() protoreflect.Message {
+func (x *ErrorResponse_Violation_Parameter) ProtoReflect() protoreflect.Message {
 	mi := &file_gamingplatform_api_common_v1_messaging_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -164,105 +164,105 @@ func (x *Error_Violation_Parameter) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use Error_Violation_Parameter.ProtoReflect.Descriptor instead.
-func (*Error_Violation_Parameter) Descriptor() ([]byte, []int) {
+// Deprecated: Use ErrorResponse_Violation_Parameter.ProtoReflect.Descriptor instead.
+func (*ErrorResponse_Violation_Parameter) Descriptor() ([]byte, []int) {
 	return file_gamingplatform_api_common_v1_messaging_proto_rawDescGZIP(), []int{0, 0, 0}
 }
 
-func (x *Error_Violation_Parameter) GetName() string {
+func (x *ErrorResponse_Violation_Parameter) GetName() string {
 	if x != nil {
 		return x.Name
 	}
 	return ""
 }
 
-func (x *Error_Violation_Parameter) GetValue() isError_Violation_Parameter_Value {
+func (x *ErrorResponse_Violation_Parameter) GetValue() isErrorResponse_Violation_Parameter_Value {
 	if x != nil {
 		return x.Value
 	}
 	return nil
 }
 
-func (x *Error_Violation_Parameter) GetBoolValue() bool {
+func (x *ErrorResponse_Violation_Parameter) GetBoolValue() bool {
 	if x != nil {
-		if x, ok := x.Value.(*Error_Violation_Parameter_BoolValue); ok {
+		if x, ok := x.Value.(*ErrorResponse_Violation_Parameter_BoolValue); ok {
 			return x.BoolValue
 		}
 	}
 	return false
 }
 
-func (x *Error_Violation_Parameter) GetIntValue() int64 {
+func (x *ErrorResponse_Violation_Parameter) GetIntValue() int64 {
 	if x != nil {
-		if x, ok := x.Value.(*Error_Violation_Parameter_IntValue); ok {
+		if x, ok := x.Value.(*ErrorResponse_Violation_Parameter_IntValue); ok {
 			return x.IntValue
 		}
 	}
 	return 0
 }
 
-func (x *Error_Violation_Parameter) GetFloatValue() float32 {
+func (x *ErrorResponse_Violation_Parameter) GetFloatValue() float32 {
 	if x != nil {
-		if x, ok := x.Value.(*Error_Violation_Parameter_FloatValue); ok {
+		if x, ok := x.Value.(*ErrorResponse_Violation_Parameter_FloatValue); ok {
 			return x.FloatValue
 		}
 	}
 	return 0
 }
 
-func (x *Error_Violation_Parameter) GetStringValue() string {
+func (x *ErrorResponse_Violation_Parameter) GetStringValue() string {
 	if x != nil {
-		if x, ok := x.Value.(*Error_Violation_Parameter_StringValue); ok {
+		if x, ok := x.Value.(*ErrorResponse_Violation_Parameter_StringValue); ok {
 			return x.StringValue
 		}
 	}
 	return ""
 }
 
-type isError_Violation_Parameter_Value interface {
-	isError_Violation_Parameter_Value()
+type isErrorResponse_Violation_Parameter_Value interface {
+	isErrorResponse_Violation_Parameter_Value()
 }
 
-type Error_Violation_Parameter_BoolValue struct {
+type ErrorResponse_Violation_Parameter_BoolValue struct {
 	BoolValue bool `protobuf:"varint,2,opt,name=bool_value,json=boolValue,proto3,oneof"`
 }
 
-type Error_Violation_Parameter_IntValue struct {
+type ErrorResponse_Violation_Parameter_IntValue struct {
 	IntValue int64 `protobuf:"varint,3,opt,name=int_value,json=intValue,proto3,oneof"`
 }
 
-type Error_Violation_Parameter_FloatValue struct {
+type ErrorResponse_Violation_Parameter_FloatValue struct {
 	FloatValue float32 `protobuf:"fixed32,4,opt,name=float_value,json=floatValue,proto3,oneof"`
 }
 
-type Error_Violation_Parameter_StringValue struct {
+type ErrorResponse_Violation_Parameter_StringValue struct {
 	StringValue string `protobuf:"bytes,5,opt,name=string_value,json=stringValue,proto3,oneof"`
 }
 
-func (*Error_Violation_Parameter_BoolValue) isError_Violation_Parameter_Value() {}
+func (*ErrorResponse_Violation_Parameter_BoolValue) isErrorResponse_Violation_Parameter_Value() {}
 
-func (*Error_Violation_Parameter_IntValue) isError_Violation_Parameter_Value() {}
+func (*ErrorResponse_Violation_Parameter_IntValue) isErrorResponse_Violation_Parameter_Value() {}
 
-func (*Error_Violation_Parameter_FloatValue) isError_Violation_Parameter_Value() {}
+func (*ErrorResponse_Violation_Parameter_FloatValue) isErrorResponse_Violation_Parameter_Value() {}
 
-func (*Error_Violation_Parameter_StringValue) isError_Violation_Parameter_Value() {}
+func (*ErrorResponse_Violation_Parameter_StringValue) isErrorResponse_Violation_Parameter_Value() {}
 
 var File_gamingplatform_api_common_v1_messaging_proto protoreflect.FileDescriptor
 
 const file_gamingplatform_api_common_v1_messaging_proto_rawDesc = "" +
 	"\n" +
-	",gamingplatform/api/common/v1/messaging.proto\x12\x1cgamingplatform.api.common.v1\"\xb5\x03\n" +
-	"\x05Error\x12M\n" +
+	",gamingplatform/api/common/v1/messaging.proto\x12\x1cgamingplatform.api.common.v1\"\xcd\x03\n" +
+	"\rErrorResponse\x12U\n" +
 	"\n" +
-	"violations\x18\x01 \x03(\v2-.gamingplatform.api.common.v1.Error.ViolationR\n" +
-	"violations\x1a\xdc\x02\n" +
+	"violations\x18\x01 \x03(\v25.gamingplatform.api.common.v1.ErrorResponse.ViolationR\n" +
+	"violations\x1a\xe4\x02\n" +
 	"\tViolation\x12#\n" +
 	"\rproperty_path\x18\x01 \x01(\tR\fpropertyPath\x12\x1e\n" +
 	"\n" +
 	"identifier\x18\x02 \x01(\tR\n" +
-	"identifier\x12W\n" +
+	"identifier\x12_\n" +
 	"\n" +
-	"parameters\x18\x03 \x03(\v27.gamingplatform.api.common.v1.Error.Violation.ParameterR\n" +
+	"parameters\x18\x03 \x03(\v2?.gamingplatform.api.common.v1.ErrorResponse.Violation.ParameterR\n" +
 	"parameters\x1a\xb0\x01\n" +
 	"\tParameter\x12\x12\n" +
 	"\x04name\x18\x01 \x01(\tR\x04name\x12\x1f\n" +
@@ -288,13 +288,13 @@ func file_gamingplatform_api_common_v1_messaging_proto_rawDescGZIP() []byte {
 
 var file_gamingplatform_api_common_v1_messaging_proto_msgTypes = make([]protoimpl.MessageInfo, 3)
 var file_gamingplatform_api_common_v1_messaging_proto_goTypes = []any{
-	(*Error)(nil),                     // 0: gamingplatform.api.common.v1.Error
-	(*Error_Violation)(nil),           // 1: gamingplatform.api.common.v1.Error.Violation
-	(*Error_Violation_Parameter)(nil), // 2: gamingplatform.api.common.v1.Error.Violation.Parameter
+	(*ErrorResponse)(nil),                     // 0: gamingplatform.api.common.v1.ErrorResponse
+	(*ErrorResponse_Violation)(nil),           // 1: gamingplatform.api.common.v1.ErrorResponse.Violation
+	(*ErrorResponse_Violation_Parameter)(nil), // 2: gamingplatform.api.common.v1.ErrorResponse.Violation.Parameter
 }
 var file_gamingplatform_api_common_v1_messaging_proto_depIdxs = []int32{
-	1, // 0: gamingplatform.api.common.v1.Error.violations:type_name -> gamingplatform.api.common.v1.Error.Violation
-	2, // 1: gamingplatform.api.common.v1.Error.Violation.parameters:type_name -> gamingplatform.api.common.v1.Error.Violation.Parameter
+	1, // 0: gamingplatform.api.common.v1.ErrorResponse.violations:type_name -> gamingplatform.api.common.v1.ErrorResponse.Violation
+	2, // 1: gamingplatform.api.common.v1.ErrorResponse.Violation.parameters:type_name -> gamingplatform.api.common.v1.ErrorResponse.Violation.Parameter
 	2, // [2:2] is the sub-list for method output_type
 	2, // [2:2] is the sub-list for method input_type
 	2, // [2:2] is the sub-list for extension type_name
@@ -308,10 +308,10 @@ func file_gamingplatform_api_common_v1_messaging_proto_init() {
 		return
 	}
 	file_gamingplatform_api_common_v1_messaging_proto_msgTypes[2].OneofWrappers = []any{
-		(*Error_Violation_Parameter_BoolValue)(nil),
-		(*Error_Violation_Parameter_IntValue)(nil),
-		(*Error_Violation_Parameter_FloatValue)(nil),
-		(*Error_Violation_Parameter_StringValue)(nil),
+		(*ErrorResponse_Violation_Parameter_BoolValue)(nil),
+		(*ErrorResponse_Violation_Parameter_IntValue)(nil),
+		(*ErrorResponse_Violation_Parameter_FloatValue)(nil),
+		(*ErrorResponse_Violation_Parameter_StringValue)(nil),
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
