@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package gamingplatform.api.identity.v1;
 
-option go_package = "identity/v1;identityv1";
+option go_package = "github.com/gaming-platform/api/go/identity/v1;identityv1";
 option php_namespace = "GamingPlatform\\Api\\Identity\\V1";
 option php_metadata_namespace = "GamingPlatform\\Api\\GPBMetadata\\Identity\\V1";
 
@@ -14,4 +14,25 @@ message UserSignedUp {
   string user_id = 1;
   string username = 2;
   string email = 3;
+}
+
+message RegisterBot {
+  string username = 1;
+}
+
+message RegisterBotResponse {
+  string bot_id = 1;
+}
+
+message GetBotByUsername {
+  string username = 1;
+}
+
+message GetBotByUsernameResponse {
+  Bot bot = 1;
+}
+
+message Bot {
+  string bot_id = 1;
+  string username = 2;
 }

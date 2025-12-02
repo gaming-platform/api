@@ -8,6 +8,56 @@ namespace GamingPlatform\Api\Identity\V1;
 
 final class IdentityV1Factory
 {
+    public static function createBot(
+        string $data
+    ): \GamingPlatform\Api\Identity\V1\Bot {
+        static $template;
+        $template ??= new \GamingPlatform\Api\Identity\V1\Bot();
+        $message = clone $template;
+        $message->mergeFromString($data);
+        return $message;
+    }
+
+    public static function createGetBotByUsername(
+        string $data
+    ): \GamingPlatform\Api\Identity\V1\GetBotByUsername {
+        static $template;
+        $template ??= new \GamingPlatform\Api\Identity\V1\GetBotByUsername();
+        $message = clone $template;
+        $message->mergeFromString($data);
+        return $message;
+    }
+
+    public static function createGetBotByUsernameResponse(
+        string $data
+    ): \GamingPlatform\Api\Identity\V1\GetBotByUsernameResponse {
+        static $template;
+        $template ??= new \GamingPlatform\Api\Identity\V1\GetBotByUsernameResponse();
+        $message = clone $template;
+        $message->mergeFromString($data);
+        return $message;
+    }
+
+    public static function createRegisterBot(
+        string $data
+    ): \GamingPlatform\Api\Identity\V1\RegisterBot {
+        static $template;
+        $template ??= new \GamingPlatform\Api\Identity\V1\RegisterBot();
+        $message = clone $template;
+        $message->mergeFromString($data);
+        return $message;
+    }
+
+    public static function createRegisterBotResponse(
+        string $data
+    ): \GamingPlatform\Api\Identity\V1\RegisterBotResponse {
+        static $template;
+        $template ??= new \GamingPlatform\Api\Identity\V1\RegisterBotResponse();
+        $message = clone $template;
+        $message->mergeFromString($data);
+        return $message;
+    }
+
     public static function createUserArrived(
         string $data
     ): \GamingPlatform\Api\Identity\V1\UserArrived {

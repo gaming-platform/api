@@ -229,7 +229,7 @@ const file_gamingplatform_api_chat_v1_messaging_proto_rawDesc = "" +
 	"\tauthor_id\x18\x03 \x01(\tR\bauthorId\x12\x1d\n" +
 	"\n" +
 	"written_at\x18\x04 \x01(\tR\twrittenAt\x12\x18\n" +
-	"\amessage\x18\x05 \x01(\tR\amessageBVZ\x0echat/v1;chatv1\xca\x02\x1aGamingPlatform\\Api\\Chat\\V1\xe2\x02&GamingPlatform\\Api\\GPBMetadata\\Chat\\V1b\x06proto3"
+	"\amessage\x18\x05 \x01(\tR\amessageBxZ0github.com/gaming-platform/api/go/chat/v1;chatv1\xca\x02\x1aGamingPlatform\\Api\\Chat\\V1\xe2\x02&GamingPlatform\\Api\\GPBMetadata\\Chat\\V1b\x06proto3"
 
 var (
 	file_gamingplatform_api_chat_v1_messaging_proto_rawDescOnce sync.Once

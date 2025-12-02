@@ -13,12 +13,14 @@ help() {
 }
 
 protoc() {
+    rm -rf ./go/* ./php/*
     docker compose run --rm protoc
     docker run \
         --rm \
         -v $(pwd):/project \
         ghcr.io/gaming-platform/docker-php-fpm:8.3-development \
         /project/bin/generatePhpFactories
+    docker compose run --rm protoc /project/bin/fixGoPaths
 }
 
 if [ "$*" = "" ]

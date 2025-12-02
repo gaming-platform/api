@@ -37,6 +37,7 @@ function generateFactories(string $packageNamespace, string $packagePath, array 
 
         $factoryName = str_replace('\\', '', $matches['namespace']) . $matches['version'] . 'Factory';
         $factoryPath = str_replace('\\', '/', $matches['namespace']) . '/' . $matches['version'];
+        $methodName = 'create' . str_replace('\\', '_', $matches['message']);
 
         $factories[$factoryName] ??= [
             'path' => $packagePath . '/' . $factoryPath . '/' . $factoryName . '.php',
@@ -46,7 +47,7 @@ function generateFactories(string $packageNamespace, string $packagePath, array 
         ];
 
         $factories[$factoryName]['methods'][] = [
-            'name' => 'create' . $matches['message'],
+            'name' => $methodName,
             'returnType' => '\\' . $class
         ];
     }
