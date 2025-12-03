@@ -20,9 +20,9 @@ class GetGamesByPlayer extends \Google\Protobuf\Internal\Message
     /**
      * "all", "running", "won, "lost", "drawn"
      *
-     * Generated from protobuf field <code>string game_state = 2;</code>
+     * Generated from protobuf field <code>string state = 2;</code>
      */
-    protected $game_state = '';
+    protected $state = '';
     /**
      * Generated from protobuf field <code>int32 page = 3;</code>
      */
@@ -39,7 +39,7 @@ class GetGamesByPlayer extends \Google\Protobuf\Internal\Message
      *     Optional. Data for populating the Message object.
      *
      *     @type string $player_id
-     *     @type string $game_state
+     *     @type string $state
      *           "all", "running", "won, "lost", "drawn"
      *     @type int $page
      *     @type int $limit
@@ -75,25 +75,25 @@ class GetGamesByPlayer extends \Google\Protobuf\Internal\Message
     /**
      * "all", "running", "won, "lost", "drawn"
      *
-     * Generated from protobuf field <code>string game_state = 2;</code>
+     * Generated from protobuf field <code>string state = 2;</code>
      * @return string
      */
-    public function getGameState()
+    public function getState()
     {
-        return $this->game_state;
+        return $this->state;
     }
 
     /**
      * "all", "running", "won, "lost", "drawn"
      *
-     * Generated from protobuf field <code>string game_state = 2;</code>
+     * Generated from protobuf field <code>string state = 2;</code>
      * @param string $var
      * @return $this
      */
-    public function setGameState($var)
+    public function setState($var)
     {
         GPBUtil::checkString($var, True);
-        $this->game_state = $var;
+        $this->state = $var;
 
         return $this;
     }

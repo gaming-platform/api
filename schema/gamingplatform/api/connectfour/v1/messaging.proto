@@ -25,7 +25,7 @@ message MakeMoveResponse {
 
 message GetGamesByPlayer {
   string player_id = 1;
-  string game_state = 2; // "all", "running", "won, "lost", "drawn"
+  string state = 2; // "all", "running", "won, "lost", "drawn"
   int32 page = 3;
   int32 limit = 4;
 }

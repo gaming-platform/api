@@ -257,7 +257,7 @@ func (*MakeMoveResponse) Descriptor() ([]byte, []int) {
 type GetGamesByPlayer struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	PlayerId      string                 `protobuf:"bytes,1,opt,name=player_id,json=playerId,proto3" json:"player_id,omitempty"`
-	GameState     string                 `protobuf:"bytes,2,opt,name=game_state,json=gameState,proto3" json:"game_state,omitempty"` // "all", "running", "won, "lost", "drawn"
+	State         string                 `protobuf:"bytes,2,opt,name=state,proto3" json:"state,omitempty"` // "all", "running", "won, "lost", "drawn"
 	Page          int32                  `protobuf:"varint,3,opt,name=page,proto3" json:"page,omitempty"`
 	Limit         int32                  `protobuf:"varint,4,opt,name=limit,proto3" json:"limit,omitempty"`
 	unknownFields protoimpl.UnknownFields
@@ -301,9 +301,9 @@ func (x *GetGamesByPlayer) GetPlayerId() string {
 	return ""
 }
 
-func (x *GetGamesByPlayer) GetGameState() string {
+func (x *GetGamesByPlayer) GetState() string {
 	if x != nil {
-		return x.GameState
+		return x.State
 	}
 	return ""
 }
@@ -523,11 +523,10 @@ const file_gamingplatform_api_connectfour_v1_messaging_proto_rawDesc = "" +
 	"\agame_id\x18\x01 \x01(\tR\x06gameId\x12\x1b\n" +
 	"\tplayer_id\x18\x02 \x01(\tR\bplayerId\x12\x16\n" +
 	"\x06column\x18\x03 \x01(\x05R\x06column\"\x12\n" +
-	"\x10MakeMoveResponse\"x\n" +
+	"\x10MakeMoveResponse\"o\n" +
 	"\x10GetGamesByPlayer\x12\x1b\n" +
-	"\tplayer_id\x18\x01 \x01(\tR\bplayerId\x12\x1d\n" +
-	"\n" +
-	"game_state\x18\x02 \x01(\tR\tgameState\x12\x12\n" +
+	"\tplayer_id\x18\x01 \x01(\tR\bplayerId\x12\x14\n" +
+	"\x05state\x18\x02 \x01(\tR\x05state\x12\x12\n" +
 	"\x04page\x18\x03 \x01(\x05R\x04page\x12\x14\n" +
 	"\x05limit\x18\x04 \x01(\x05R\x05limit\"o\n" +
 	"\x18GetGamesByPlayerResponse\x12=\n" +
