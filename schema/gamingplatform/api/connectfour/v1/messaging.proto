@@ -1,0 +1,54 @@
+syntax = "proto3";
+
+package gamingplatform.api.connectfour.v1;
+
+option go_package = "github.com/gaming-platform/api/go/connectfour/v1;connectfourv1";
+option php_namespace = "GamingPlatform\\Api\\ConnectFour\\V1";
+option php_metadata_namespace = "GamingPlatform\\Api\\GPBMetadata\\ConnectFour\\V1";
+
+message JoinGame {
+  string game_id = 1;
+  string player_id = 2;
+}
+
+message JoinGameResponse {
+}
+
+message MakeMove {
+  string game_id = 1;
+  string player_id = 2;
+  int32 column = 3;
+}
+
+message MakeMoveResponse {
+}
+
+message GetGamesByPlayer {
+  string player_id = 1;
+  string game_state = 2; // "all", "running", "won, "lost", "drawn"
+  int32 page = 3;
+  int32 limit = 4;
+}
+
+message GetGamesByPlayerResponse {
+  repeated Game games = 1;
+  int32 total = 2;
+}
+
+message Game {
+  message Move {
+    enum Color {
+      COLOR_UNSPECIFIED = 0;
+      RED = 1;
+      YELLOW = 2;
+    }
+    int32 x = 1;
+    int32 y = 2;
+    Color color = 3;
+  }
+  string game_id = 1;
+  string red_player_id = 2;
+  string yellow_player_id = 3;
+  string current_player_id = 4;
+  repeated Move moves = 5;
+}
