@@ -16,18 +16,18 @@ class Color
      */
     const COLOR_UNSPECIFIED = 0;
     /**
-     * Generated from protobuf enum <code>RED = 1;</code>
+     * Generated from protobuf enum <code>COLOR_RED = 1;</code>
      */
-    const RED = 1;
+    const COLOR_RED = 1;
     /**
-     * Generated from protobuf enum <code>YELLOW = 2;</code>
+     * Generated from protobuf enum <code>COLOR_YELLOW = 2;</code>
      */
-    const YELLOW = 2;
+    const COLOR_YELLOW = 2;
 
     private static $valueToName = [
         self::COLOR_UNSPECIFIED => 'COLOR_UNSPECIFIED',
-        self::RED => 'RED',
-        self::YELLOW => 'YELLOW',
+        self::COLOR_RED => 'COLOR_RED',
+        self::COLOR_YELLOW => 'COLOR_YELLOW',
     ];
 
     public static function name($value)

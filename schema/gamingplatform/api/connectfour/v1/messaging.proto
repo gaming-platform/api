@@ -39,8 +39,8 @@ message Game {
   message Move {
     enum Color {
       COLOR_UNSPECIFIED = 0;
-      RED = 1;
-      YELLOW = 2;
+      COLOR_RED = 1;
+      COLOR_YELLOW = 2;
     }
     int32 x = 1;
     int32 y = 2;

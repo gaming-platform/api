@@ -25,21 +25,21 @@ type Game_Move_Color int32
 
 const (
 	Game_Move_COLOR_UNSPECIFIED Game_Move_Color = 0
-	Game_Move_RED               Game_Move_Color = 1
-	Game_Move_YELLOW            Game_Move_Color = 2
+	Game_Move_COLOR_RED         Game_Move_Color = 1
+	Game_Move_COLOR_YELLOW      Game_Move_Color = 2
 )
 
 // Enum value maps for Game_Move_Color.
 var (
 	Game_Move_Color_name = map[int32]string{
 		0: "COLOR_UNSPECIFIED",
-		1: "RED",
-		2: "YELLOW",
+		1: "COLOR_RED",
+		2: "COLOR_YELLOW",
 	}
 	Game_Move_Color_value = map[string]int32{
 		"COLOR_UNSPECIFIED": 0,
-		"RED":               1,
-		"YELLOW":            2,
+		"COLOR_RED":         1,
+		"COLOR_YELLOW":      2,
 	}
 )
 
@@ -532,22 +532,21 @@ const file_gamingplatform_api_connectfour_v1_messaging_proto_rawDesc = "" +
 	"\x05limit\x18\x04 \x01(\x05R\x05limit\"o\n" +
 	"\x18GetGamesByPlayerResponse\x12=\n" +
 	"\x05games\x18\x01 \x03(\v2'.gamingplatform.api.connectfour.v1.GameR\x05games\x12\x14\n" +
-	"\x05total\x18\x02 \x01(\x05R\x05total\"\x81\x03\n" +
+	"\x05total\x18\x02 \x01(\x05R\x05total\"\x8d\x03\n" +
 	"\x04Game\x12\x17\n" +
 	"\agame_id\x18\x01 \x01(\tR\x06gameId\x12\"\n" +
 	"\rred_player_id\x18\x02 \x01(\tR\vredPlayerId\x12(\n" +
 	"\x10yellow_player_id\x18\x03 \x01(\tR\x0eyellowPlayerId\x12*\n" +
 	"\x11current_player_id\x18\x04 \x01(\tR\x0fcurrentPlayerId\x12B\n" +
-	"\x05moves\x18\x05 \x03(\v2,.gamingplatform.api.connectfour.v1.Game.MoveR\x05moves\x1a\xa1\x01\n" +
+	"\x05moves\x18\x05 \x03(\v2,.gamingplatform.api.connectfour.v1.Game.MoveR\x05moves\x1a\xad\x01\n" +
 	"\x04Move\x12\f\n" +
 	"\x01x\x18\x01 \x01(\x05R\x01x\x12\f\n" +
 	"\x01y\x18\x02 \x01(\x05R\x01y\x12H\n" +
-	"\x05color\x18\x03 \x01(\x0e22.gamingplatform.api.connectfour.v1.Game.Move.ColorR\x05color\"3\n" +
+	"\x05color\x18\x03 \x01(\x0e22.gamingplatform.api.connectfour.v1.Game.Move.ColorR\x05color\"?\n" +
 	"\x05Color\x12\x15\n" +
-	"\x11COLOR_UNSPECIFIED\x10\x00\x12\a\n" +
-	"\x03RED\x10\x01\x12\n" +
-	"\n" +
-	"\x06YELLOW\x10\x02B\x94\x01Z>github.com/gaming-platform/api/go/connectfour/v1;connectfourv1\xca\x02!GamingPlatform\\Api\\ConnectFour\\V1\xe2\x02-GamingPlatform\\Api\\GPBMetadata\\ConnectFour\\V1b\x06proto3"
+	"\x11COLOR_UNSPECIFIED\x10\x00\x12\r\n" +
+	"\tCOLOR_RED\x10\x01\x12\x10\n" +
+	"\fCOLOR_YELLOW\x10\x02B\x94\x01Z>github.com/gaming-platform/api/go/connectfour/v1;connectfourv1\xca\x02!GamingPlatform\\Api\\ConnectFour\\V1\xe2\x02-GamingPlatform\\Api\\GPBMetadata\\ConnectFour\\V1b\x06proto3"
 
 var (
 	file_gamingplatform_api_connectfour_v1_messaging_proto_rawDescOnce sync.Once
