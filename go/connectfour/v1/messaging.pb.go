@@ -21,6 +21,58 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
+type OpenGame_Stone int32
+
+const (
+	OpenGame_STONE_UNSPECIFIED OpenGame_Stone = 0
+	OpenGame_STONE_RED         OpenGame_Stone = 1
+	OpenGame_STONE_YELLOW      OpenGame_Stone = 2
+	OpenGame_STONE_RANDOM      OpenGame_Stone = -1
+)
+
+// Enum value maps for OpenGame_Stone.
+var (
+	OpenGame_Stone_name = map[int32]string{
+		0:  "STONE_UNSPECIFIED",
+		1:  "STONE_RED",
+		2:  "STONE_YELLOW",
+		-1: "STONE_RANDOM",
+	}
+	OpenGame_Stone_value = map[string]int32{
+		"STONE_UNSPECIFIED": 0,
+		"STONE_RED":         1,
+		"STONE_YELLOW":      2,
+		"STONE_RANDOM":      -1,
+	}
+)
+
+func (x OpenGame_Stone) Enum() *OpenGame_Stone {
+	p := new(OpenGame_Stone)
+	*p = x
+	return p
+}
+
+func (x OpenGame_Stone) String() string {
+	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+}
+
+func (OpenGame_Stone) Descriptor() protoreflect.EnumDescriptor {
+	return file_gamingplatform_api_connectfour_v1_messaging_proto_enumTypes[0].Descriptor()
+}
+
+func (OpenGame_Stone) Type() protoreflect.EnumType {
+	return &file_gamingplatform_api_connectfour_v1_messaging_proto_enumTypes[0]
+}
+
+func (x OpenGame_Stone) Number() protoreflect.EnumNumber {
+	return protoreflect.EnumNumber(x)
+}
+
+// Deprecated: Use OpenGame_Stone.Descriptor instead.
+func (OpenGame_Stone) EnumDescriptor() ([]byte, []int) {
+	return file_gamingplatform_api_connectfour_v1_messaging_proto_rawDescGZIP(), []int{0, 0}
+}
+
 type Game_Move_Color int32
 
 const (
@@ -54,11 +106,11 @@ func (x Game_Move_Color) String() string {
 }
 
 func (Game_Move_Color) Descriptor() protoreflect.EnumDescriptor {
-	return file_gamingplatform_api_connectfour_v1_messaging_proto_enumTypes[0].Descriptor()
+	return file_gamingplatform_api_connectfour_v1_messaging_proto_enumTypes[1].Descriptor()
 }
 
 func (Game_Move_Color) Type() protoreflect.EnumType {
-	return &file_gamingplatform_api_connectfour_v1_messaging_proto_enumTypes[0]
+	return &file_gamingplatform_api_connectfour_v1_messaging_proto_enumTypes[1]
 }
 
 func (x Game_Move_Color) Number() protoreflect.EnumNumber {
@@ -67,7 +119,127 @@ func (x Game_Move_Color) Number() protoreflect.EnumNumber {
 
 // Deprecated: Use Game_Move_Color.Descriptor instead.
 func (Game_Move_Color) EnumDescriptor() ([]byte, []int) {
-	return file_gamingplatform_api_connectfour_v1_messaging_proto_rawDescGZIP(), []int{6, 0, 0}
+	return file_gamingplatform_api_connectfour_v1_messaging_proto_rawDescGZIP(), []int{8, 0, 0}
+}
+
+type OpenGame struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	PlayerId      string                 `protobuf:"bytes,1,opt,name=player_id,json=playerId,proto3" json:"player_id,omitempty"`
+	Width         int32                  `protobuf:"varint,2,opt,name=width,proto3" json:"width,omitempty"`
+	Height        int32                  `protobuf:"varint,3,opt,name=height,proto3" json:"height,omitempty"`
+	Stone         OpenGame_Stone         `protobuf:"varint,4,opt,name=stone,proto3,enum=gamingplatform.api.connectfour.v1.OpenGame_Stone" json:"stone,omitempty"`
+	Timer         string                 `protobuf:"bytes,5,opt,name=timer,proto3" json:"timer,omitempty"` // "move:15000", "game:60000:0", "game:60000:3000"
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *OpenGame) Reset() {
+	*x = OpenGame{}
+	mi := &file_gamingplatform_api_connectfour_v1_messaging_proto_msgTypes[0]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *OpenGame) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*OpenGame) ProtoMessage() {}
+
+func (x *OpenGame) ProtoReflect() protoreflect.Message {
+	mi := &file_gamingplatform_api_connectfour_v1_messaging_proto_msgTypes[0]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use OpenGame.ProtoReflect.Descriptor instead.
+func (*OpenGame) Descriptor() ([]byte, []int) {
+	return file_gamingplatform_api_connectfour_v1_messaging_proto_rawDescGZIP(), []int{0}
+}
+
+func (x *OpenGame) GetPlayerId() string {
+	if x != nil {
+		return x.PlayerId
+	}
+	return ""
+}
+
+func (x *OpenGame) GetWidth() int32 {
+	if x != nil {
+		return x.Width
+	}
+	return 0
+}
+
+func (x *OpenGame) GetHeight() int32 {
+	if x != nil {
+		return x.Height
+	}
+	return 0
+}
+
+func (x *OpenGame) GetStone() OpenGame_Stone {
+	if x != nil {
+		return x.Stone
+	}
+	return OpenGame_STONE_UNSPECIFIED
+}
+
+func (x *OpenGame) GetTimer() string {
+	if x != nil {
+		return x.Timer
+	}
+	return ""
+}
+
+type OpenGameResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	GameId        string                 `protobuf:"bytes,1,opt,name=game_id,json=gameId,proto3" json:"game_id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *OpenGameResponse) Reset() {
+	*x = OpenGameResponse{}
+	mi := &file_gamingplatform_api_connectfour_v1_messaging_proto_msgTypes[1]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *OpenGameResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*OpenGameResponse) ProtoMessage() {}
+
+func (x *OpenGameResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_gamingplatform_api_connectfour_v1_messaging_proto_msgTypes[1]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use OpenGameResponse.ProtoReflect.Descriptor instead.
+func (*OpenGameResponse) Descriptor() ([]byte, []int) {
+	return file_gamingplatform_api_connectfour_v1_messaging_proto_rawDescGZIP(), []int{1}
+}
+
+func (x *OpenGameResponse) GetGameId() string {
+	if x != nil {
+		return x.GameId
+	}
+	return ""
 }
 
 type JoinGame struct {
@@ -80,7 +252,7 @@ type JoinGame struct {
 
 func (x *JoinGame) Reset() {
 	*x = JoinGame{}
-	mi := &file_gamingplatform_api_connectfour_v1_messaging_proto_msgTypes[0]
+	mi := &file_gamingplatform_api_connectfour_v1_messaging_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -92,7 +264,7 @@ func (x *JoinGame) String() string {
 func (*JoinGame) ProtoMessage() {}
 
 func (x *JoinGame) ProtoReflect() protoreflect.Message {
-	mi := &file_gamingplatform_api_connectfour_v1_messaging_proto_msgTypes[0]
+	mi := &file_gamingplatform_api_connectfour_v1_messaging_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -105,7 +277,7 @@ func (x *JoinGame) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use JoinGame.ProtoReflect.Descriptor instead.
 func (*JoinGame) Descriptor() ([]byte, []int) {
-	return file_gamingplatform_api_connectfour_v1_messaging_proto_rawDescGZIP(), []int{0}
+	return file_gamingplatform_api_connectfour_v1_messaging_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *JoinGame) GetGameId() string {
@@ -130,7 +302,7 @@ type JoinGameResponse struct {
 
 func (x *JoinGameResponse) Reset() {
 	*x = JoinGameResponse{}
-	mi := &file_gamingplatform_api_connectfour_v1_messaging_proto_msgTypes[1]
+	mi := &file_gamingplatform_api_connectfour_v1_messaging_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -142,7 +314,7 @@ func (x *JoinGameResponse) String() string {
 func (*JoinGameResponse) ProtoMessage() {}
 
 func (x *JoinGameResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_gamingplatform_api_connectfour_v1_messaging_proto_msgTypes[1]
+	mi := &file_gamingplatform_api_connectfour_v1_messaging_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -155,7 +327,7 @@ func (x *JoinGameResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use JoinGameResponse.ProtoReflect.Descriptor instead.
 func (*JoinGameResponse) Descriptor() ([]byte, []int) {
-	return file_gamingplatform_api_connectfour_v1_messaging_proto_rawDescGZIP(), []int{1}
+	return file_gamingplatform_api_connectfour_v1_messaging_proto_rawDescGZIP(), []int{3}
 }
 
 type MakeMove struct {
@@ -169,7 +341,7 @@ type MakeMove struct {
 
 func (x *MakeMove) Reset() {
 	*x = MakeMove{}
-	mi := &file_gamingplatform_api_connectfour_v1_messaging_proto_msgTypes[2]
+	mi := &file_gamingplatform_api_connectfour_v1_messaging_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -181,7 +353,7 @@ func (x *MakeMove) String() string {
 func (*MakeMove) ProtoMessage() {}
 
 func (x *MakeMove) ProtoReflect() protoreflect.Message {
-	mi := &file_gamingplatform_api_connectfour_v1_messaging_proto_msgTypes[2]
+	mi := &file_gamingplatform_api_connectfour_v1_messaging_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -194,7 +366,7 @@ func (x *MakeMove) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MakeMove.ProtoReflect.Descriptor instead.
 func (*MakeMove) Descriptor() ([]byte, []int) {
-	return file_gamingplatform_api_connectfour_v1_messaging_proto_rawDescGZIP(), []int{2}
+	return file_gamingplatform_api_connectfour_v1_messaging_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *MakeMove) GetGameId() string {
@@ -226,7 +398,7 @@ type MakeMoveResponse struct {
 
 func (x *MakeMoveResponse) Reset() {
 	*x = MakeMoveResponse{}
-	mi := &file_gamingplatform_api_connectfour_v1_messaging_proto_msgTypes[3]
+	mi := &file_gamingplatform_api_connectfour_v1_messaging_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -238,7 +410,7 @@ func (x *MakeMoveResponse) String() string {
 func (*MakeMoveResponse) ProtoMessage() {}
 
 func (x *MakeMoveResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_gamingplatform_api_connectfour_v1_messaging_proto_msgTypes[3]
+	mi := &file_gamingplatform_api_connectfour_v1_messaging_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -251,7 +423,7 @@ func (x *MakeMoveResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MakeMoveResponse.ProtoReflect.Descriptor instead.
 func (*MakeMoveResponse) Descriptor() ([]byte, []int) {
-	return file_gamingplatform_api_connectfour_v1_messaging_proto_rawDescGZIP(), []int{3}
+	return file_gamingplatform_api_connectfour_v1_messaging_proto_rawDescGZIP(), []int{5}
 }
 
 type GetGamesByPlayer struct {
@@ -266,7 +438,7 @@ type GetGamesByPlayer struct {
 
 func (x *GetGamesByPlayer) Reset() {
 	*x = GetGamesByPlayer{}
-	mi := &file_gamingplatform_api_connectfour_v1_messaging_proto_msgTypes[4]
+	mi := &file_gamingplatform_api_connectfour_v1_messaging_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -278,7 +450,7 @@ func (x *GetGamesByPlayer) String() string {
 func (*GetGamesByPlayer) ProtoMessage() {}
 
 func (x *GetGamesByPlayer) ProtoReflect() protoreflect.Message {
-	mi := &file_gamingplatform_api_connectfour_v1_messaging_proto_msgTypes[4]
+	mi := &file_gamingplatform_api_connectfour_v1_messaging_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -291,7 +463,7 @@ func (x *GetGamesByPlayer) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetGamesByPlayer.ProtoReflect.Descriptor instead.
 func (*GetGamesByPlayer) Descriptor() ([]byte, []int) {
-	return file_gamingplatform_api_connectfour_v1_messaging_proto_rawDescGZIP(), []int{4}
+	return file_gamingplatform_api_connectfour_v1_messaging_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *GetGamesByPlayer) GetPlayerId() string {
@@ -332,7 +504,7 @@ type GetGamesByPlayerResponse struct {
 
 func (x *GetGamesByPlayerResponse) Reset() {
 	*x = GetGamesByPlayerResponse{}
-	mi := &file_gamingplatform_api_connectfour_v1_messaging_proto_msgTypes[5]
+	mi := &file_gamingplatform_api_connectfour_v1_messaging_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -344,7 +516,7 @@ func (x *GetGamesByPlayerResponse) String() string {
 func (*GetGamesByPlayerResponse) ProtoMessage() {}
 
 func (x *GetGamesByPlayerResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_gamingplatform_api_connectfour_v1_messaging_proto_msgTypes[5]
+	mi := &file_gamingplatform_api_connectfour_v1_messaging_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -357,7 +529,7 @@ func (x *GetGamesByPlayerResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetGamesByPlayerResponse.ProtoReflect.Descriptor instead.
 func (*GetGamesByPlayerResponse) Descriptor() ([]byte, []int) {
-	return file_gamingplatform_api_connectfour_v1_messaging_proto_rawDescGZIP(), []int{5}
+	return file_gamingplatform_api_connectfour_v1_messaging_proto_rawDescGZIP(), []int{7}
 }
 
 func (x *GetGamesByPlayerResponse) GetGames() []*Game {
@@ -387,7 +559,7 @@ type Game struct {
 
 func (x *Game) Reset() {
 	*x = Game{}
-	mi := &file_gamingplatform_api_connectfour_v1_messaging_proto_msgTypes[6]
+	mi := &file_gamingplatform_api_connectfour_v1_messaging_proto_msgTypes[8]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -399,7 +571,7 @@ func (x *Game) String() string {
 func (*Game) ProtoMessage() {}
 
 func (x *Game) ProtoReflect() protoreflect.Message {
-	mi := &file_gamingplatform_api_connectfour_v1_messaging_proto_msgTypes[6]
+	mi := &file_gamingplatform_api_connectfour_v1_messaging_proto_msgTypes[8]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -412,7 +584,7 @@ func (x *Game) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Game.ProtoReflect.Descriptor instead.
 func (*Game) Descriptor() ([]byte, []int) {
-	return file_gamingplatform_api_connectfour_v1_messaging_proto_rawDescGZIP(), []int{6}
+	return file_gamingplatform_api_connectfour_v1_messaging_proto_rawDescGZIP(), []int{8}
 }
 
 func (x *Game) GetGameId() string {
@@ -461,7 +633,7 @@ type Game_Move struct {
 
 func (x *Game_Move) Reset() {
 	*x = Game_Move{}
-	mi := &file_gamingplatform_api_connectfour_v1_messaging_proto_msgTypes[7]
+	mi := &file_gamingplatform_api_connectfour_v1_messaging_proto_msgTypes[9]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -473,7 +645,7 @@ func (x *Game_Move) String() string {
 func (*Game_Move) ProtoMessage() {}
 
 func (x *Game_Move) ProtoReflect() protoreflect.Message {
-	mi := &file_gamingplatform_api_connectfour_v1_messaging_proto_msgTypes[7]
+	mi := &file_gamingplatform_api_connectfour_v1_messaging_proto_msgTypes[9]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -486,7 +658,7 @@ func (x *Game_Move) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Game_Move.ProtoReflect.Descriptor instead.
 func (*Game_Move) Descriptor() ([]byte, []int) {
-	return file_gamingplatform_api_connectfour_v1_messaging_proto_rawDescGZIP(), []int{6, 0}
+	return file_gamingplatform_api_connectfour_v1_messaging_proto_rawDescGZIP(), []int{8, 0}
 }
 
 func (x *Game_Move) GetX() int32 {
@@ -514,7 +686,20 @@ var File_gamingplatform_api_connectfour_v1_messaging_proto protoreflect.FileDesc
 
 const file_gamingplatform_api_connectfour_v1_messaging_proto_rawDesc = "" +
 	"\n" +
-	"1gamingplatform/api/connectfour/v1/messaging.proto\x12!gamingplatform.api.connectfour.v1\"@\n" +
+	"1gamingplatform/api/connectfour/v1/messaging.proto\x12!gamingplatform.api.connectfour.v1\"\x90\x02\n" +
+	"\bOpenGame\x12\x1b\n" +
+	"\tplayer_id\x18\x01 \x01(\tR\bplayerId\x12\x14\n" +
+	"\x05width\x18\x02 \x01(\x05R\x05width\x12\x16\n" +
+	"\x06height\x18\x03 \x01(\x05R\x06height\x12G\n" +
+	"\x05stone\x18\x04 \x01(\x0e21.gamingplatform.api.connectfour.v1.OpenGame.StoneR\x05stone\x12\x14\n" +
+	"\x05timer\x18\x05 \x01(\tR\x05timer\"Z\n" +
+	"\x05Stone\x12\x15\n" +
+	"\x11STONE_UNSPECIFIED\x10\x00\x12\r\n" +
+	"\tSTONE_RED\x10\x01\x12\x10\n" +
+	"\fSTONE_YELLOW\x10\x02\x12\x19\n" +
+	"\fSTONE_RANDOM\x10\xff\xff\xff\xff\xff\xff\xff\xff\xff\x01\"+\n" +
+	"\x10OpenGameResponse\x12\x17\n" +
+	"\agame_id\x18\x01 \x01(\tR\x06gameId\"@\n" +
 	"\bJoinGame\x12\x17\n" +
 	"\agame_id\x18\x01 \x01(\tR\x06gameId\x12\x1b\n" +
 	"\tplayer_id\x18\x02 \x01(\tR\bplayerId\"\x12\n" +
@@ -559,28 +744,32 @@ func file_gamingplatform_api_connectfour_v1_messaging_proto_rawDescGZIP() []byte
 	return file_gamingplatform_api_connectfour_v1_messaging_proto_rawDescData
 }
 
-var file_gamingplatform_api_connectfour_v1_messaging_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
-var file_gamingplatform_api_connectfour_v1_messaging_proto_msgTypes = make([]protoimpl.MessageInfo, 8)
+var file_gamingplatform_api_connectfour_v1_messaging_proto_enumTypes = make([]protoimpl.EnumInfo, 2)
+var file_gamingplatform_api_connectfour_v1_messaging_proto_msgTypes = make([]protoimpl.MessageInfo, 10)
 var file_gamingplatform_api_connectfour_v1_messaging_proto_goTypes = []any{
-	(Game_Move_Color)(0),             // 0: gamingplatform.api.connectfour.v1.Game.Move.Color
-	(*JoinGame)(nil),                 // 1: gamingplatform.api.connectfour.v1.JoinGame
-	(*JoinGameResponse)(nil),         // 2: gamingplatform.api.connectfour.v1.JoinGameResponse
-	(*MakeMove)(nil),                 // 3: gamingplatform.api.connectfour.v1.MakeMove
-	(*MakeMoveResponse)(nil),         // 4: gamingplatform.api.connectfour.v1.MakeMoveResponse
-	(*GetGamesByPlayer)(nil),         // 5: gamingplatform.api.connectfour.v1.GetGamesByPlayer
-	(*GetGamesByPlayerResponse)(nil), // 6: gamingplatform.api.connectfour.v1.GetGamesByPlayerResponse
-	(*Game)(nil),                     // 7: gamingplatform.api.connectfour.v1.Game
-	(*Game_Move)(nil),                // 8: gamingplatform.api.connectfour.v1.Game.Move
+	(OpenGame_Stone)(0),              // 0: gamingplatform.api.connectfour.v1.OpenGame.Stone
+	(Game_Move_Color)(0),             // 1: gamingplatform.api.connectfour.v1.Game.Move.Color
+	(*OpenGame)(nil),                 // 2: gamingplatform.api.connectfour.v1.OpenGame
+	(*OpenGameResponse)(nil),         // 3: gamingplatform.api.connectfour.v1.OpenGameResponse
+	(*JoinGame)(nil),                 // 4: gamingplatform.api.connectfour.v1.JoinGame
+	(*JoinGameResponse)(nil),         // 5: gamingplatform.api.connectfour.v1.JoinGameResponse
+	(*MakeMove)(nil),                 // 6: gamingplatform.api.connectfour.v1.MakeMove
+	(*MakeMoveResponse)(nil),         // 7: gamingplatform.api.connectfour.v1.MakeMoveResponse
+	(*GetGamesByPlayer)(nil),         // 8: gamingplatform.api.connectfour.v1.GetGamesByPlayer
+	(*GetGamesByPlayerResponse)(nil), // 9: gamingplatform.api.connectfour.v1.GetGamesByPlayerResponse
+	(*Game)(nil),                     // 10: gamingplatform.api.connectfour.v1.Game
+	(*Game_Move)(nil),                // 11: gamingplatform.api.connectfour.v1.Game.Move
 }
 var file_gamingplatform_api_connectfour_v1_messaging_proto_depIdxs = []int32{
-	7, // 0: gamingplatform.api.connectfour.v1.GetGamesByPlayerResponse.games:type_name -> gamingplatform.api.connectfour.v1.Game
-	8, // 1: gamingplatform.api.connectfour.v1.Game.moves:type_name -> gamingplatform.api.connectfour.v1.Game.Move
-	0, // 2: gamingplatform.api.connectfour.v1.Game.Move.color:type_name -> gamingplatform.api.connectfour.v1.Game.Move.Color
-	3, // [3:3] is the sub-list for method output_type
-	3, // [3:3] is the sub-list for method input_type
-	3, // [3:3] is the sub-list for extension type_name
-	3, // [3:3] is the sub-list for extension extendee
-	0, // [0:3] is the sub-list for field type_name
+	0,  // 0: gamingplatform.api.connectfour.v1.OpenGame.stone:type_name -> gamingplatform.api.connectfour.v1.OpenGame.Stone
+	10, // 1: gamingplatform.api.connectfour.v1.GetGamesByPlayerResponse.games:type_name -> gamingplatform.api.connectfour.v1.Game
+	11, // 2: gamingplatform.api.connectfour.v1.Game.moves:type_name -> gamingplatform.api.connectfour.v1.Game.Move
+	1,  // 3: gamingplatform.api.connectfour.v1.Game.Move.color:type_name -> gamingplatform.api.connectfour.v1.Game.Move.Color
+	4,  // [4:4] is the sub-list for method output_type
+	4,  // [4:4] is the sub-list for method input_type
+	4,  // [4:4] is the sub-list for extension type_name
+	4,  // [4:4] is the sub-list for extension extendee
+	0,  // [0:4] is the sub-list for field type_name
 }
 
 func init() { file_gamingplatform_api_connectfour_v1_messaging_proto_init() }
@@ -593,8 +782,8 @@ func file_gamingplatform_api_connectfour_v1_messaging_proto_init() {
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_gamingplatform_api_connectfour_v1_messaging_proto_rawDesc), len(file_gamingplatform_api_connectfour_v1_messaging_proto_rawDesc)),
-			NumEnums:      1,
-			NumMessages:   8,
+			NumEnums:      2,
+			NumMessages:   10,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

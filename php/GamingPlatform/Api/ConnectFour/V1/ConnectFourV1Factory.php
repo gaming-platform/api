@@ -6,8 +6,10 @@ namespace GamingPlatform\Api\ConnectFour\V1;
 
 // This file is auto-generated. Do not edit!
 
+/** @deprecated */
 final class ConnectFourV1Factory
 {
+    /** @deprecated */
     public static function createGame_Move(
         string $data
     ): \GamingPlatform\Api\ConnectFour\V1\Game\Move {
@@ -18,6 +20,7 @@ final class ConnectFourV1Factory
         return $message;
     }
 
+    /** @deprecated */
     public static function createGame(
         string $data
     ): \GamingPlatform\Api\ConnectFour\V1\Game {
@@ -28,6 +31,7 @@ final class ConnectFourV1Factory
         return $message;
     }
 
+    /** @deprecated */
     public static function createGetGamesByPlayer(
         string $data
     ): \GamingPlatform\Api\ConnectFour\V1\GetGamesByPlayer {
@@ -38,6 +42,7 @@ final class ConnectFourV1Factory
         return $message;
     }
 
+    /** @deprecated */
     public static function createGetGamesByPlayerResponse(
         string $data
     ): \GamingPlatform\Api\ConnectFour\V1\GetGamesByPlayerResponse {
@@ -48,6 +53,7 @@ final class ConnectFourV1Factory
         return $message;
     }
 
+    /** @deprecated */
     public static function createJoinGame(
         string $data
     ): \GamingPlatform\Api\ConnectFour\V1\JoinGame {
@@ -58,6 +64,7 @@ final class ConnectFourV1Factory
         return $message;
     }
 
+    /** @deprecated */
     public static function createJoinGameResponse(
         string $data
     ): \GamingPlatform\Api\ConnectFour\V1\JoinGameResponse {
@@ -68,6 +75,7 @@ final class ConnectFourV1Factory
         return $message;
     }
 
+    /** @deprecated */
     public static function createMakeMove(
         string $data
     ): \GamingPlatform\Api\ConnectFour\V1\MakeMove {
@@ -78,11 +86,34 @@ final class ConnectFourV1Factory
         return $message;
     }
 
+    /** @deprecated */
     public static function createMakeMoveResponse(
         string $data
     ): \GamingPlatform\Api\ConnectFour\V1\MakeMoveResponse {
         static $template;
         $template ??= new \GamingPlatform\Api\ConnectFour\V1\MakeMoveResponse();
+        $message = clone $template;
+        $message->mergeFromString($data);
+        return $message;
+    }
+
+    /** @deprecated */
+    public static function createOpenGame(
+        string $data
+    ): \GamingPlatform\Api\ConnectFour\V1\OpenGame {
+        static $template;
+        $template ??= new \GamingPlatform\Api\ConnectFour\V1\OpenGame();
+        $message = clone $template;
+        $message->mergeFromString($data);
+        return $message;
+    }
+
+    /** @deprecated */
+    public static function createOpenGameResponse(
+        string $data
+    ): \GamingPlatform\Api\ConnectFour\V1\OpenGameResponse {
+        static $template;
+        $template ??= new \GamingPlatform\Api\ConnectFour\V1\OpenGameResponse();
         $message = clone $template;
         $message->mergeFromString($data);
         return $message;
