@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+set -e
+
+# Go files are generated into their full module path.
+# This script moves the files to the correct location.
+cp -r /project/go/github.com/gaming-platform/api/go/* /project/go
+rm -rf /project/go/github.com
+
+/project/bin/generatePhpEnums
+/project/bin/generatePhpFactories

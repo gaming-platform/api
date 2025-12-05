@@ -1,0 +1,91 @@
+#!/usr/bin/env php
+<?php
+
+declare(strict_types=1);
+
+const PACKAGE_NAMESPACE = 'GamingPlatform\\Api';
+const PACKAGE_PATH = '/project/php/GamingPlatform/Api';
+
+function loadFiles($directory): void
+{
+    $entries = array_diff(scandir($directory), ['.', '..']);
+    foreach ($entries as $entry) {
+        $path = $directory . '/' . $entry;
+        is_dir($path) ? loadFiles($path) : require_once $path;
+    }
+}
+
+function findMessageClasses($packageNamespace): array
+{
+    return array_filter(
+        get_declared_classes(),
+        static fn(string $class) => str_starts_with($class, $packageNamespace)
+            && in_array(\Google\Protobuf\Internal\Message::class, class_parents($class))
+    );
+}
+
+function generateEnums(string $packageNamespace, string $packagePath, array $classes): array
+{
+    $enums = [];
+
+    foreach ($classes as $class) {
+        preg_match(
+            '/(?<namespace>.*)\\\\(?<version>V\d+)\\\\(?<message>.*)/',
+            substr($class, strlen($packageNamespace) + 1),
+            $matches
+        );
+
+        $message = $matches['message'];
+        if (str_contains($matches['message'], '\\')) {
+            continue; // Ignore nested types.
+        }
+
+        $enumName = str_replace('\\', '', $matches['namespace']) . $matches['version'] . 'Type';
+        $enumPath = str_replace('\\', '/', $matches['namespace']) . '/' . $matches['version'];
+        $caseName = $message;
+        $caseValue = $matches['namespace'] . '.' . $message . '.' . strtolower($matches['version']);
+
+        $enums[$enumName] ??= [
+            'path' => $packagePath . '/' . $enumPath . '/' . $enumName . '.php',
+            'namespace' => $packageNamespace . '\\' . $matches['namespace'] . '\\' . $matches['version'],
+            'name' => $enumName,
+            'cases' => []
+        ];
+
+        $enums[$enumName]['cases'][] = [
+            'name' => $caseName,
+            'value' => $caseValue
+        ];
+    }
+
+    return $enums;
+}
+
+function writeEnums(array $enums): void
+{
+    foreach ($enums as $enum) {
+        $content = '<?php' . PHP_EOL . PHP_EOL;
+        $content .= 'declare(strict_types=1);' . PHP_EOL . PHP_EOL;
+        $content .= 'namespace ' . $enum['namespace'] . ';' . PHP_EOL . PHP_EOL;
+        $content .= '// This file is auto-generated. Do not edit!' . PHP_EOL . PHP_EOL;
+        $content .= 'enum ' . $enum['name']. ': string' . PHP_EOL;
+        $content .= '{' . PHP_EOL;
+        foreach ($enum['cases'] as $case) {
+            $content .= '    case ' . $case['name'] . ' = \'' . $case['value'] . '\';' . PHP_EOL;
+        }
+        $content .= '}' . PHP_EOL;
+
+        echo 'Write ' . $enum['path'] . PHP_EOL;
+        file_put_contents($enum['path'], $content);
+    }
+}
+
+loadFiles(PACKAGE_PATH);
+
+writeEnums(
+    generateEnums(
+        PACKAGE_NAMESPACE,
+        PACKAGE_PATH,
+        findMessageClasses(PACKAGE_NAMESPACE)
+    )
+);
