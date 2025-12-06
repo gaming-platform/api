@@ -6,84 +6,76 @@ namespace GamingPlatform\Api\Identity\V1;
 
 // This file is auto-generated. Do not edit!
 
-/** @deprecated */
-final class IdentityV1Factory
+final class IdentityV1
 {
-    /** @deprecated */
+    public const string Bot = 'Identity.Bot.v1';
     public static function createBot(
         string $data
-    ): \GamingPlatform\Api\Identity\V1\Bot {
+    ): Bot {
         static $template;
-        $template ??= new \GamingPlatform\Api\Identity\V1\Bot();
+        $template ??= new Bot();
         $message = clone $template;
         $message->mergeFromString($data);
         return $message;
     }
-
-    /** @deprecated */
+    public const string GetBotByUsername = 'Identity.GetBotByUsername.v1';
     public static function createGetBotByUsername(
         string $data
-    ): \GamingPlatform\Api\Identity\V1\GetBotByUsername {
+    ): GetBotByUsername {
         static $template;
-        $template ??= new \GamingPlatform\Api\Identity\V1\GetBotByUsername();
+        $template ??= new GetBotByUsername();
         $message = clone $template;
         $message->mergeFromString($data);
         return $message;
     }
-
-    /** @deprecated */
+    public const string GetBotByUsernameResponse = 'Identity.GetBotByUsernameResponse.v1';
     public static function createGetBotByUsernameResponse(
         string $data
-    ): \GamingPlatform\Api\Identity\V1\GetBotByUsernameResponse {
+    ): GetBotByUsernameResponse {
         static $template;
-        $template ??= new \GamingPlatform\Api\Identity\V1\GetBotByUsernameResponse();
+        $template ??= new GetBotByUsernameResponse();
         $message = clone $template;
         $message->mergeFromString($data);
         return $message;
     }
-
-    /** @deprecated */
+    public const string RegisterBot = 'Identity.RegisterBot.v1';
     public static function createRegisterBot(
         string $data
-    ): \GamingPlatform\Api\Identity\V1\RegisterBot {
+    ): RegisterBot {
         static $template;
-        $template ??= new \GamingPlatform\Api\Identity\V1\RegisterBot();
+        $template ??= new RegisterBot();
         $message = clone $template;
         $message->mergeFromString($data);
         return $message;
     }
-
-    /** @deprecated */
+    public const string RegisterBotResponse = 'Identity.RegisterBotResponse.v1';
     public static function createRegisterBotResponse(
         string $data
-    ): \GamingPlatform\Api\Identity\V1\RegisterBotResponse {
+    ): RegisterBotResponse {
         static $template;
-        $template ??= new \GamingPlatform\Api\Identity\V1\RegisterBotResponse();
+        $template ??= new RegisterBotResponse();
         $message = clone $template;
         $message->mergeFromString($data);
         return $message;
     }
-
-    /** @deprecated */
+    public const string UserArrived = 'Identity.UserArrived.v1';
     public static function createUserArrived(
         string $data
-    ): \GamingPlatform\Api\Identity\V1\UserArrived {
+    ): UserArrived {
         static $template;
-        $template ??= new \GamingPlatform\Api\Identity\V1\UserArrived();
+        $template ??= new UserArrived();
         $message = clone $template;
         $message->mergeFromString($data);
         return $message;
     }
-
-    /** @deprecated */
+    public const string UserSignedUp = 'Identity.UserSignedUp.v1';
     public static function createUserSignedUp(
         string $data
-    ): \GamingPlatform\Api\Identity\V1\UserSignedUp {
+    ): UserSignedUp {
         static $template;
-        $template ??= new \GamingPlatform\Api\Identity\V1\UserSignedUp();
+        $template ??= new UserSignedUp();
         $message = clone $template;
         $message->mergeFromString($data);
         return $message;
     }
-
 }

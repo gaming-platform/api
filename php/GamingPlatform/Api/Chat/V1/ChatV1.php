@@ -6,40 +6,36 @@ namespace GamingPlatform\Api\Chat\V1;
 
 // This file is auto-generated. Do not edit!
 
-/** @deprecated */
-final class ChatV1Factory
+final class ChatV1
 {
-    /** @deprecated */
+    public const string InitiateChat = 'Chat.InitiateChat.v1';
     public static function createInitiateChat(
         string $data
-    ): \GamingPlatform\Api\Chat\V1\InitiateChat {
+    ): InitiateChat {
         static $template;
-        $template ??= new \GamingPlatform\Api\Chat\V1\InitiateChat();
+        $template ??= new InitiateChat();
         $message = clone $template;
         $message->mergeFromString($data);
         return $message;
     }
-
-    /** @deprecated */
+    public const string InitiateChatResponse = 'Chat.InitiateChatResponse.v1';
     public static function createInitiateChatResponse(
         string $data
-    ): \GamingPlatform\Api\Chat\V1\InitiateChatResponse {
+    ): InitiateChatResponse {
         static $template;
-        $template ??= new \GamingPlatform\Api\Chat\V1\InitiateChatResponse();
+        $template ??= new InitiateChatResponse();
         $message = clone $template;
         $message->mergeFromString($data);
         return $message;
     }
-
-    /** @deprecated */
+    public const string MessageWritten = 'Chat.MessageWritten.v1';
     public static function createMessageWritten(
         string $data
-    ): \GamingPlatform\Api\Chat\V1\MessageWritten {
+    ): MessageWritten {
         static $template;
-        $template ??= new \GamingPlatform\Api\Chat\V1\MessageWritten();
+        $template ??= new MessageWritten();
         $message = clone $template;
         $message->mergeFromString($data);
         return $message;
     }
-
 }

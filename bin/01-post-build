@@ -7,5 +7,5 @@ set -e
 cp -r /project/go/github.com/gaming-platform/api/go/* /project/go
 rm -rf /project/go/github.com
 
-/project/bin/generatePhpEnums
-/project/bin/generatePhpFactories
+/project/bin/generateAdditionalLanguageFeatures
+/project/bin/generateLegacyLanguageFeatures
