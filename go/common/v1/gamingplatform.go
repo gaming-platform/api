@@ -1,4 +1,4 @@
-package CommonV1
+package commonv1
 
 // This file is auto-generated. Do not edit!
 

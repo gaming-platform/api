@@ -83,7 +83,7 @@ function writeGoFile(array $domains): void
     foreach ($domains as $domain) {
         $path = GO_PACKAGE_PATH . '/' . strtolower($domain['name'] . '/' . $domain['version']) . '/gamingplatform.go';
 
-        $content = 'package ' . $domain['name'] . $domain['version'] . PHP_EOL . PHP_EOL;
+        $content = 'package ' . strtolower($domain['name'] . $domain['version']) . PHP_EOL . PHP_EOL;
         $content .= '// This file is auto-generated. Do not edit!' . PHP_EOL . PHP_EOL;
         foreach ($domain['messages'] as $message) {
             $content .= 'const ' . $message['name'] . 'Type = "' . $message['type'] . '"' . PHP_EOL;

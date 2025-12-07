@@ -1,4 +1,4 @@
-package IdentityV1
+package identityv1
 
 // This file is auto-generated. Do not edit!
 

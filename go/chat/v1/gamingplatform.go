@@ -1,4 +1,4 @@
-package ChatV1
+package chatv1
 
 // This file is auto-generated. Do not edit!
 
