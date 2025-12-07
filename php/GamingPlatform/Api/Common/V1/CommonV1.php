@@ -8,7 +8,7 @@ namespace GamingPlatform\Api\Common\V1;
 
 final class CommonV1
 {
-    public const string ErrorResponse = 'Common.ErrorResponse.v1';
+    public const string ErrorResponseType = 'Common.ErrorResponse.v1';
     public static function createErrorResponse(
         string $data
     ): ErrorResponse {

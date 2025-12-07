@@ -60,7 +60,7 @@ function writePhpClasses(array $domains): void
         $content .= 'final class ' . $domain['name'] . $domain['version'] . PHP_EOL;
         $content .= '{' . PHP_EOL;
         foreach ($domain['messages'] as $message) {
-            $content .= '    public const string ' . $message['name'] . ' = \'' . $message['type'] . '\';' . PHP_EOL;
+            $content .= '    public const string ' . $message['name'] . 'Type = \'' . $message['type'] . '\';' . PHP_EOL;
             $content .= '    public static function create' . $message['name'] . '(' . PHP_EOL;
             $content .= '        string $data' . PHP_EOL;
             $content .= '    ): ' . $message['name'] . ' {' . PHP_EOL;

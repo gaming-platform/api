@@ -8,7 +8,7 @@ namespace GamingPlatform\Api\Identity\V1;
 
 final class IdentityV1
 {
-    public const string Bot = 'Identity.Bot.v1';
+    public const string BotType = 'Identity.Bot.v1';
     public static function createBot(
         string $data
     ): Bot {
@@ -18,7 +18,7 @@ final class IdentityV1
         $message->mergeFromString($data);
         return $message;
     }
-    public const string GetBotByUsername = 'Identity.GetBotByUsername.v1';
+    public const string GetBotByUsernameType = 'Identity.GetBotByUsername.v1';
     public static function createGetBotByUsername(
         string $data
     ): GetBotByUsername {
@@ -28,7 +28,7 @@ final class IdentityV1
         $message->mergeFromString($data);
         return $message;
     }
-    public const string GetBotByUsernameResponse = 'Identity.GetBotByUsernameResponse.v1';
+    public const string GetBotByUsernameResponseType = 'Identity.GetBotByUsernameResponse.v1';
     public static function createGetBotByUsernameResponse(
         string $data
     ): GetBotByUsernameResponse {
@@ -38,7 +38,7 @@ final class IdentityV1
         $message->mergeFromString($data);
         return $message;
     }
-    public const string RegisterBot = 'Identity.RegisterBot.v1';
+    public const string RegisterBotType = 'Identity.RegisterBot.v1';
     public static function createRegisterBot(
         string $data
     ): RegisterBot {
@@ -48,7 +48,7 @@ final class IdentityV1
         $message->mergeFromString($data);
         return $message;
     }
-    public const string RegisterBotResponse = 'Identity.RegisterBotResponse.v1';
+    public const string RegisterBotResponseType = 'Identity.RegisterBotResponse.v1';
     public static function createRegisterBotResponse(
         string $data
     ): RegisterBotResponse {
@@ -58,7 +58,7 @@ final class IdentityV1
         $message->mergeFromString($data);
         return $message;
     }
-    public const string UserArrived = 'Identity.UserArrived.v1';
+    public const string UserArrivedType = 'Identity.UserArrived.v1';
     public static function createUserArrived(
         string $data
     ): UserArrived {
@@ -68,7 +68,7 @@ final class IdentityV1
         $message->mergeFromString($data);
         return $message;
     }
-    public const string UserSignedUp = 'Identity.UserSignedUp.v1';
+    public const string UserSignedUpType = 'Identity.UserSignedUp.v1';
     public static function createUserSignedUp(
         string $data
     ): UserSignedUp {

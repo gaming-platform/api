@@ -8,7 +8,7 @@ namespace GamingPlatform\Api\Chat\V1;
 
 final class ChatV1
 {
-    public const string InitiateChat = 'Chat.InitiateChat.v1';
+    public const string InitiateChatType = 'Chat.InitiateChat.v1';
     public static function createInitiateChat(
         string $data
     ): InitiateChat {
@@ -18,7 +18,7 @@ final class ChatV1
         $message->mergeFromString($data);
         return $message;
     }
-    public const string InitiateChatResponse = 'Chat.InitiateChatResponse.v1';
+    public const string InitiateChatResponseType = 'Chat.InitiateChatResponse.v1';
     public static function createInitiateChatResponse(
         string $data
     ): InitiateChatResponse {
@@ -28,7 +28,7 @@ final class ChatV1
         $message->mergeFromString($data);
         return $message;
     }
-    public const string MessageWritten = 'Chat.MessageWritten.v1';
+    public const string MessageWrittenType = 'Chat.MessageWritten.v1';
     public static function createMessageWritten(
         string $data
     ): MessageWritten {
