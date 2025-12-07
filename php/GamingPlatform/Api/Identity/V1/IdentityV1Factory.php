@@ -6,8 +6,10 @@ namespace GamingPlatform\Api\Identity\V1;
 
 // This file is auto-generated. Do not edit!
 
+/** @deprecated */
 final class IdentityV1Factory
 {
+    /** @deprecated */
     public static function createBot(
         string $data
     ): \GamingPlatform\Api\Identity\V1\Bot {
@@ -18,6 +20,7 @@ final class IdentityV1Factory
         return $message;
     }
 
+    /** @deprecated */
     public static function createGetBotByUsername(
         string $data
     ): \GamingPlatform\Api\Identity\V1\GetBotByUsername {
@@ -28,6 +31,7 @@ final class IdentityV1Factory
         return $message;
     }
 
+    /** @deprecated */
     public static function createGetBotByUsernameResponse(
         string $data
     ): \GamingPlatform\Api\Identity\V1\GetBotByUsernameResponse {
@@ -38,6 +42,7 @@ final class IdentityV1Factory
         return $message;
     }
 
+    /** @deprecated */
     public static function createRegisterBot(
         string $data
     ): \GamingPlatform\Api\Identity\V1\RegisterBot {
@@ -48,6 +53,7 @@ final class IdentityV1Factory
         return $message;
     }
 
+    /** @deprecated */
     public static function createRegisterBotResponse(
         string $data
     ): \GamingPlatform\Api\Identity\V1\RegisterBotResponse {
@@ -58,6 +64,7 @@ final class IdentityV1Factory
         return $message;
     }
 
+    /** @deprecated */
     public static function createUserArrived(
         string $data
     ): \GamingPlatform\Api\Identity\V1\UserArrived {
@@ -68,6 +75,7 @@ final class IdentityV1Factory
         return $message;
     }
 
+    /** @deprecated */
     public static function createUserSignedUp(
         string $data
     ): \GamingPlatform\Api\Identity\V1\UserSignedUp {

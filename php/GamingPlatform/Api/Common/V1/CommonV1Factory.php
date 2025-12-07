@@ -6,8 +6,10 @@ namespace GamingPlatform\Api\Common\V1;
 
 // This file is auto-generated. Do not edit!
 
+/** @deprecated */
 final class CommonV1Factory
 {
+    /** @deprecated */
     public static function createErrorResponse_Violation_Parameter(
         string $data
     ): \GamingPlatform\Api\Common\V1\ErrorResponse\Violation\Parameter {
@@ -18,6 +20,7 @@ final class CommonV1Factory
         return $message;
     }
 
+    /** @deprecated */
     public static function createErrorResponse_Violation(
         string $data
     ): \GamingPlatform\Api\Common\V1\ErrorResponse\Violation {
@@ -28,6 +31,7 @@ final class CommonV1Factory
         return $message;
     }
 
+    /** @deprecated */
     public static function createErrorResponse(
         string $data
     ): \GamingPlatform\Api\Common\V1\ErrorResponse {

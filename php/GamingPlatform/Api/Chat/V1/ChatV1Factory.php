@@ -6,8 +6,10 @@ namespace GamingPlatform\Api\Chat\V1;
 
 // This file is auto-generated. Do not edit!
 
+/** @deprecated */
 final class ChatV1Factory
 {
+    /** @deprecated */
     public static function createInitiateChat(
         string $data
     ): \GamingPlatform\Api\Chat\V1\InitiateChat {
@@ -18,6 +20,7 @@ final class ChatV1Factory
         return $message;
     }
 
+    /** @deprecated */
     public static function createInitiateChatResponse(
         string $data
     ): \GamingPlatform\Api\Chat\V1\InitiateChatResponse {
@@ -28,6 +31,7 @@ final class ChatV1Factory
         return $message;
     }
 
+    /** @deprecated */
     public static function createMessageWritten(
         string $data
     ): \GamingPlatform\Api\Chat\V1\MessageWritten {
