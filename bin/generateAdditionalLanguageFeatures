@@ -47,7 +47,7 @@ function findRootMessagesClasses(): array
     return $domains;
 }
 
-function writePhpClasses(array $domains): void
+function writePhpFiles(array $domains): void
 {
     foreach ($domains as $domain) {
         $path = PHP_PACKAGE_PATH . '/' . $domain['name'] . '/' . $domain['version'] . '/' . $domain['name'] . $domain['version'] . '.php';
@@ -62,12 +62,12 @@ function writePhpClasses(array $domains): void
         foreach ($domain['messages'] as $message) {
             $content .= '    public const string ' . $message['name'] . 'Type = \'' . $message['type'] . '\';' . PHP_EOL;
             $content .= '    public static function create' . $message['name'] . '(' . PHP_EOL;
-            $content .= '        string $data' . PHP_EOL;
+            $content .= '        ?string $data = null' . PHP_EOL;
             $content .= '    ): ' . $message['name'] . ' {' . PHP_EOL;
             $content .= '        static $template;' . PHP_EOL;
             $content .= '        $template ??= new ' . $message['name'] . '();' . PHP_EOL;
             $content .= '        $message = clone $template;' . PHP_EOL;
-            $content .= '        $message->mergeFromString($data);' . PHP_EOL;
+            $content .= '        if ($data !== null) $message->mergeFromString($data);' . PHP_EOL;
             $content .= '        return $message;' . PHP_EOL;
             $content .= '    }' . PHP_EOL;
         }
@@ -97,5 +97,5 @@ function writeGoFile(array $domains): void
 loadFiles(PHP_PACKAGE_PATH);
 
 $rootMessagesClasses = findRootMessagesClasses();
-writePhpClasses($rootMessagesClasses);
+writePhpFiles($rootMessagesClasses);
 writeGoFile($rootMessagesClasses);

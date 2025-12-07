@@ -10,12 +10,12 @@ final class CommonV1
 {
     public const string ErrorResponseType = 'Common.ErrorResponse.v1';
     public static function createErrorResponse(
-        string $data
+        ?string $data = null
     ): ErrorResponse {
         static $template;
         $template ??= new ErrorResponse();
         $message = clone $template;
-        $message->mergeFromString($data);
+        if ($data !== null) $message->mergeFromString($data);
         return $message;
     }
 }
