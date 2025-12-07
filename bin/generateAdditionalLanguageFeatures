@@ -16,7 +16,7 @@ function loadFiles($directory): void
     }
 }
 
-function findRootMessagesClasses(): array
+function findMessagesClasses(): array
 {
     $definedMessages = array_filter(
         get_declared_classes(),
@@ -32,15 +32,14 @@ function findRootMessagesClasses(): array
                 $matches
         );
 
-        if (str_contains($matches['message'], '\\')) {
-            continue; // Ignore nested types.
-        }
-
         $domainKey = $matches['domain'] . $matches['version'];
         $domains[$domainKey] ??= ['name' => $matches['domain'], 'version' => $matches['version'], 'messages' => []];
         $domains[$domainKey]['messages'][] = [
             'name' => $matches['message'],
-            'type' => $matches['domain'] . '.' . $matches['message'] . '.' . strtolower($matches['version'])
+            'snakeName' => str_replace('\\', '_', $matches['message']),
+            'wireType' => !str_contains($matches['message'], '\\')
+                ? $matches['domain'] . '.' . $matches['message'] . '.' . strtolower($matches['version'])
+                : null
         ];
     }
 
@@ -60,8 +59,10 @@ function writePhpFiles(array $domains): void
         $content .= 'final class ' . $domain['name'] . $domain['version'] . PHP_EOL;
         $content .= '{' . PHP_EOL;
         foreach ($domain['messages'] as $message) {
-            $content .= '    public const string ' . $message['name'] . 'Type = \'' . $message['type'] . '\';' . PHP_EOL;
-            $content .= '    public static function create' . $message['name'] . '(' . PHP_EOL;
+            if ($message['wireType']) {
+                $content .= '    public const string ' . $message['name'] . 'Type = \'' . $message['wireType'] . '\';' . PHP_EOL;
+            }
+            $content .= '    public static function create' . $message['snakeName'] . '(' . PHP_EOL;
             $content .= '        ?string $data = null' . PHP_EOL;
             $content .= '    ): ' . $message['name'] . ' {' . PHP_EOL;
             $content .= '        static $template;' . PHP_EOL;
@@ -78,7 +79,7 @@ function writePhpFiles(array $domains): void
     }
 }
 
-function writeGoFile(array $domains): void
+function writeGoFiles(array $domains): void
 {
     foreach ($domains as $domain) {
         $path = GO_PACKAGE_PATH . '/' . strtolower($domain['name'] . '/' . $domain['version']) . '/gamingplatform.go';
@@ -86,7 +87,9 @@ function writeGoFile(array $domains): void
         $content = 'package ' . strtolower($domain['name'] . $domain['version']) . PHP_EOL . PHP_EOL;
         $content .= '// This file is auto-generated. Do not edit!' . PHP_EOL . PHP_EOL;
         foreach ($domain['messages'] as $message) {
-            $content .= 'const ' . $message['name'] . 'Type = "' . $message['type'] . '"' . PHP_EOL;
+            if ($message['wireType']) {
+                $content .= 'const ' . $message['name'] . 'Type = "' . $message['wireType'] . '"' . PHP_EOL;
+            }
         }
 
         echo 'Write ' . $path . PHP_EOL;
@@ -96,6 +99,6 @@ function writeGoFile(array $domains): void
 
 loadFiles(PHP_PACKAGE_PATH);
 
-$rootMessagesClasses = findRootMessagesClasses();
-writePhpFiles($rootMessagesClasses);
-writeGoFile($rootMessagesClasses);
+$messageClasses = findMessagesClasses();
+writePhpFiles($messageClasses);
+writeGoFiles($messageClasses);
