@@ -73,6 +73,67 @@ func (OpenGame_Stone) EnumDescriptor() ([]byte, []int) {
 	return file_gamingplatform_api_connectfour_v1_messaging_proto_rawDescGZIP(), []int{0, 0}
 }
 
+type GetGamesByPlayer_State int32
+
+const (
+	GetGamesByPlayer_STATE_UNSPECIFIED GetGamesByPlayer_State = 0
+	GetGamesByPlayer_STATE_ALL         GetGamesByPlayer_State = 1
+	GetGamesByPlayer_STATE_OPEN        GetGamesByPlayer_State = 2
+	GetGamesByPlayer_STATE_RUNNING     GetGamesByPlayer_State = 3
+	GetGamesByPlayer_STATE_WON         GetGamesByPlayer_State = 4
+	GetGamesByPlayer_STATE_LOST        GetGamesByPlayer_State = 5
+	GetGamesByPlayer_STATE_DRAWN       GetGamesByPlayer_State = 6
+)
+
+// Enum value maps for GetGamesByPlayer_State.
+var (
+	GetGamesByPlayer_State_name = map[int32]string{
+		0: "STATE_UNSPECIFIED",
+		1: "STATE_ALL",
+		2: "STATE_OPEN",
+		3: "STATE_RUNNING",
+		4: "STATE_WON",
+		5: "STATE_LOST",
+		6: "STATE_DRAWN",
+	}
+	GetGamesByPlayer_State_value = map[string]int32{
+		"STATE_UNSPECIFIED": 0,
+		"STATE_ALL":         1,
+		"STATE_OPEN":        2,
+		"STATE_RUNNING":     3,
+		"STATE_WON":         4,
+		"STATE_LOST":        5,
+		"STATE_DRAWN":       6,
+	}
+)
+
+func (x GetGamesByPlayer_State) Enum() *GetGamesByPlayer_State {
+	p := new(GetGamesByPlayer_State)
+	*p = x
+	return p
+}
+
+func (x GetGamesByPlayer_State) String() string {
+	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+}
+
+func (GetGamesByPlayer_State) Descriptor() protoreflect.EnumDescriptor {
+	return file_gamingplatform_api_connectfour_v1_messaging_proto_enumTypes[1].Descriptor()
+}
+
+func (GetGamesByPlayer_State) Type() protoreflect.EnumType {
+	return &file_gamingplatform_api_connectfour_v1_messaging_proto_enumTypes[1]
+}
+
+func (x GetGamesByPlayer_State) Number() protoreflect.EnumNumber {
+	return protoreflect.EnumNumber(x)
+}
+
+// Deprecated: Use GetGamesByPlayer_State.Descriptor instead.
+func (GetGamesByPlayer_State) EnumDescriptor() ([]byte, []int) {
+	return file_gamingplatform_api_connectfour_v1_messaging_proto_rawDescGZIP(), []int{6, 0}
+}
+
 type Game_Move_Color int32
 
 const (
@@ -106,11 +167,11 @@ func (x Game_Move_Color) String() string {
 }
 
 func (Game_Move_Color) Descriptor() protoreflect.EnumDescriptor {
-	return file_gamingplatform_api_connectfour_v1_messaging_proto_enumTypes[1].Descriptor()
+	return file_gamingplatform_api_connectfour_v1_messaging_proto_enumTypes[2].Descriptor()
 }
 
 func (Game_Move_Color) Type() protoreflect.EnumType {
-	return &file_gamingplatform_api_connectfour_v1_messaging_proto_enumTypes[1]
+	return &file_gamingplatform_api_connectfour_v1_messaging_proto_enumTypes[2]
 }
 
 func (x Game_Move_Color) Number() protoreflect.EnumNumber {
@@ -429,7 +490,7 @@ func (*MakeMoveResponse) Descriptor() ([]byte, []int) {
 type GetGamesByPlayer struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	PlayerId      string                 `protobuf:"bytes,1,opt,name=player_id,json=playerId,proto3" json:"player_id,omitempty"`
-	State         string                 `protobuf:"bytes,2,opt,name=state,proto3" json:"state,omitempty"` // "all", "running", "won, "lost", "drawn"
+	State         GetGamesByPlayer_State `protobuf:"varint,2,opt,name=state,proto3,enum=gamingplatform.api.connectfour.v1.GetGamesByPlayer_State" json:"state,omitempty"`
 	Page          int32                  `protobuf:"varint,3,opt,name=page,proto3" json:"page,omitempty"`
 	Limit         int32                  `protobuf:"varint,4,opt,name=limit,proto3" json:"limit,omitempty"`
 	unknownFields protoimpl.UnknownFields
@@ -473,11 +534,11 @@ func (x *GetGamesByPlayer) GetPlayerId() string {
 	return ""
 }
 
-func (x *GetGamesByPlayer) GetState() string {
+func (x *GetGamesByPlayer) GetState() GetGamesByPlayer_State {
 	if x != nil {
 		return x.State
 	}
-	return ""
+	return GetGamesByPlayer_STATE_UNSPECIFIED
 }
 
 func (x *GetGamesByPlayer) GetPage() int32 {
@@ -708,12 +769,22 @@ const file_gamingplatform_api_connectfour_v1_messaging_proto_rawDesc = "" +
 	"\agame_id\x18\x01 \x01(\tR\x06gameId\x12\x1b\n" +
 	"\tplayer_id\x18\x02 \x01(\tR\bplayerId\x12\x16\n" +
 	"\x06column\x18\x03 \x01(\x05R\x06column\"\x12\n" +
-	"\x10MakeMoveResponse\"o\n" +
+	"\x10MakeMoveResponse\"\xad\x02\n" +
 	"\x10GetGamesByPlayer\x12\x1b\n" +
-	"\tplayer_id\x18\x01 \x01(\tR\bplayerId\x12\x14\n" +
-	"\x05state\x18\x02 \x01(\tR\x05state\x12\x12\n" +
+	"\tplayer_id\x18\x01 \x01(\tR\bplayerId\x12O\n" +
+	"\x05state\x18\x02 \x01(\x0e29.gamingplatform.api.connectfour.v1.GetGamesByPlayer.StateR\x05state\x12\x12\n" +
 	"\x04page\x18\x03 \x01(\x05R\x04page\x12\x14\n" +
-	"\x05limit\x18\x04 \x01(\x05R\x05limit\"o\n" +
+	"\x05limit\x18\x04 \x01(\x05R\x05limit\"\x80\x01\n" +
+	"\x05State\x12\x15\n" +
+	"\x11STATE_UNSPECIFIED\x10\x00\x12\r\n" +
+	"\tSTATE_ALL\x10\x01\x12\x0e\n" +
+	"\n" +
+	"STATE_OPEN\x10\x02\x12\x11\n" +
+	"\rSTATE_RUNNING\x10\x03\x12\r\n" +
+	"\tSTATE_WON\x10\x04\x12\x0e\n" +
+	"\n" +
+	"STATE_LOST\x10\x05\x12\x0f\n" +
+	"\vSTATE_DRAWN\x10\x06\"o\n" +
 	"\x18GetGamesByPlayerResponse\x12=\n" +
 	"\x05games\x18\x01 \x03(\v2'.gamingplatform.api.connectfour.v1.GameR\x05games\x12\x14\n" +
 	"\x05total\x18\x02 \x01(\x05R\x05total\"\x8d\x03\n" +
@@ -744,32 +815,34 @@ func file_gamingplatform_api_connectfour_v1_messaging_proto_rawDescGZIP() []byte
 	return file_gamingplatform_api_connectfour_v1_messaging_proto_rawDescData
 }
 
-var file_gamingplatform_api_connectfour_v1_messaging_proto_enumTypes = make([]protoimpl.EnumInfo, 2)
+var file_gamingplatform_api_connectfour_v1_messaging_proto_enumTypes = make([]protoimpl.EnumInfo, 3)
 var file_gamingplatform_api_connectfour_v1_messaging_proto_msgTypes = make([]protoimpl.MessageInfo, 10)
 var file_gamingplatform_api_connectfour_v1_messaging_proto_goTypes = []any{
 	(OpenGame_Stone)(0),              // 0: gamingplatform.api.connectfour.v1.OpenGame.Stone
-	(Game_Move_Color)(0),             // 1: gamingplatform.api.connectfour.v1.Game.Move.Color
-	(*OpenGame)(nil),                 // 2: gamingplatform.api.connectfour.v1.OpenGame
-	(*OpenGameResponse)(nil),         // 3: gamingplatform.api.connectfour.v1.OpenGameResponse
-	(*JoinGame)(nil),                 // 4: gamingplatform.api.connectfour.v1.JoinGame
-	(*JoinGameResponse)(nil),         // 5: gamingplatform.api.connectfour.v1.JoinGameResponse
-	(*MakeMove)(nil),                 // 6: gamingplatform.api.connectfour.v1.MakeMove
-	(*MakeMoveResponse)(nil),         // 7: gamingplatform.api.connectfour.v1.MakeMoveResponse
-	(*GetGamesByPlayer)(nil),         // 8: gamingplatform.api.connectfour.v1.GetGamesByPlayer
-	(*GetGamesByPlayerResponse)(nil), // 9: gamingplatform.api.connectfour.v1.GetGamesByPlayerResponse
-	(*Game)(nil),                     // 10: gamingplatform.api.connectfour.v1.Game
-	(*Game_Move)(nil),                // 11: gamingplatform.api.connectfour.v1.Game.Move
+	(GetGamesByPlayer_State)(0),      // 1: gamingplatform.api.connectfour.v1.GetGamesByPlayer.State
+	(Game_Move_Color)(0),             // 2: gamingplatform.api.connectfour.v1.Game.Move.Color
+	(*OpenGame)(nil),                 // 3: gamingplatform.api.connectfour.v1.OpenGame
+	(*OpenGameResponse)(nil),         // 4: gamingplatform.api.connectfour.v1.OpenGameResponse
+	(*JoinGame)(nil),                 // 5: gamingplatform.api.connectfour.v1.JoinGame
+	(*JoinGameResponse)(nil),         // 6: gamingplatform.api.connectfour.v1.JoinGameResponse
+	(*MakeMove)(nil),                 // 7: gamingplatform.api.connectfour.v1.MakeMove
+	(*MakeMoveResponse)(nil),         // 8: gamingplatform.api.connectfour.v1.MakeMoveResponse
+	(*GetGamesByPlayer)(nil),         // 9: gamingplatform.api.connectfour.v1.GetGamesByPlayer
+	(*GetGamesByPlayerResponse)(nil), // 10: gamingplatform.api.connectfour.v1.GetGamesByPlayerResponse
+	(*Game)(nil),                     // 11: gamingplatform.api.connectfour.v1.Game
+	(*Game_Move)(nil),                // 12: gamingplatform.api.connectfour.v1.Game.Move
 }
 var file_gamingplatform_api_connectfour_v1_messaging_proto_depIdxs = []int32{
 	0,  // 0: gamingplatform.api.connectfour.v1.OpenGame.stone:type_name -> gamingplatform.api.connectfour.v1.OpenGame.Stone
-	10, // 1: gamingplatform.api.connectfour.v1.GetGamesByPlayerResponse.games:type_name -> gamingplatform.api.connectfour.v1.Game
-	11, // 2: gamingplatform.api.connectfour.v1.Game.moves:type_name -> gamingplatform.api.connectfour.v1.Game.Move
-	1,  // 3: gamingplatform.api.connectfour.v1.Game.Move.color:type_name -> gamingplatform.api.connectfour.v1.Game.Move.Color
-	4,  // [4:4] is the sub-list for method output_type
-	4,  // [4:4] is the sub-list for method input_type
-	4,  // [4:4] is the sub-list for extension type_name
-	4,  // [4:4] is the sub-list for extension extendee
-	0,  // [0:4] is the sub-list for field type_name
+	1,  // 1: gamingplatform.api.connectfour.v1.GetGamesByPlayer.state:type_name -> gamingplatform.api.connectfour.v1.GetGamesByPlayer.State
+	11, // 2: gamingplatform.api.connectfour.v1.GetGamesByPlayerResponse.games:type_name -> gamingplatform.api.connectfour.v1.Game
+	12, // 3: gamingplatform.api.connectfour.v1.Game.moves:type_name -> gamingplatform.api.connectfour.v1.Game.Move
+	2,  // 4: gamingplatform.api.connectfour.v1.Game.Move.color:type_name -> gamingplatform.api.connectfour.v1.Game.Move.Color
+	5,  // [5:5] is the sub-list for method output_type
+	5,  // [5:5] is the sub-list for method input_type
+	5,  // [5:5] is the sub-list for extension type_name
+	5,  // [5:5] is the sub-list for extension extendee
+	0,  // [0:5] is the sub-list for field type_name
 }
 
 func init() { file_gamingplatform_api_connectfour_v1_messaging_proto_init() }
@@ -782,7 +855,7 @@ func file_gamingplatform_api_connectfour_v1_messaging_proto_init() {
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_gamingplatform_api_connectfour_v1_messaging_proto_rawDesc), len(file_gamingplatform_api_connectfour_v1_messaging_proto_rawDesc)),
-			NumEnums:      2,
+			NumEnums:      3,
 			NumMessages:   10,
 			NumExtensions: 0,
 			NumServices:   0,

@@ -42,8 +42,17 @@ message MakeMoveResponse {
 }
 
 message GetGamesByPlayer {
+  enum State {
+    STATE_UNSPECIFIED = 0;
+    STATE_ALL = 1;
+    STATE_OPEN = 2;
+    STATE_RUNNING = 3;
+    STATE_WON = 4;
+    STATE_LOST = 5;
+    STATE_DRAWN = 6;
+  }
   string player_id = 1;
-  string state = 2; // "all", "running", "won, "lost", "drawn"
+  State state = 2;
   int32 page = 3;
   int32 limit = 4;
 }

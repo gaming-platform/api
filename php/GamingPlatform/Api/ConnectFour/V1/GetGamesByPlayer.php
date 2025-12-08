@@ -18,11 +18,9 @@ class GetGamesByPlayer extends \Google\Protobuf\Internal\Message
      */
     protected $player_id = '';
     /**
-     * "all", "running", "won, "lost", "drawn"
-     *
-     * Generated from protobuf field <code>string state = 2;</code>
+     * Generated from protobuf field <code>.gamingplatform.api.connectfour.v1.GetGamesByPlayer.State state = 2;</code>
      */
-    protected $state = '';
+    protected $state = 0;
     /**
      * Generated from protobuf field <code>int32 page = 3;</code>
      */
@@ -39,8 +37,7 @@ class GetGamesByPlayer extends \Google\Protobuf\Internal\Message
      *     Optional. Data for populating the Message object.
      *
      *     @type string $player_id
-     *     @type string $state
-     *           "all", "running", "won, "lost", "drawn"
+     *     @type int $state
      *     @type int $page
      *     @type int $limit
      * }
@@ -73,10 +70,8 @@ class GetGamesByPlayer extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * "all", "running", "won, "lost", "drawn"
-     *
-     * Generated from protobuf field <code>string state = 2;</code>
-     * @return string
+     * Generated from protobuf field <code>.gamingplatform.api.connectfour.v1.GetGamesByPlayer.State state = 2;</code>
+     * @return int
      */
     public function getState()
     {
@@ -84,15 +79,13 @@ class GetGamesByPlayer extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * "all", "running", "won, "lost", "drawn"
-     *
-     * Generated from protobuf field <code>string state = 2;</code>
-     * @param string $var
+     * Generated from protobuf field <code>.gamingplatform.api.connectfour.v1.GetGamesByPlayer.State state = 2;</code>
+     * @param int $var
      * @return $this
      */
     public function setState($var)
     {
-        GPBUtil::checkString($var, True);
+        GPBUtil::checkEnum($var, \GamingPlatform\Api\ConnectFour\V1\GetGamesByPlayer\State::class);
         $this->state = $var;
 
         return $this;
