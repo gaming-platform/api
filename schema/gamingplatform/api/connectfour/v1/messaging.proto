@@ -1,0 +1,81 @@
+syntax = "proto3";
+
+package gamingplatform.api.connectfour.v1;
+
+option go_package = "github.com/gaming-platform/api/go/connectfour/v1;connectfourv1";
+option php_namespace = "GamingPlatform\\Api\\ConnectFour\\V1";
+option php_metadata_namespace = "GamingPlatform\\Api\\GPBMetadata\\ConnectFour\\V1";
+
+message OpenGame {
+  enum Stone {
+    STONE_UNSPECIFIED = 0;
+    STONE_RED = 1;
+    STONE_YELLOW = 2;
+    STONE_RANDOM = -1;
+  }
+  string player_id = 1;
+  int32 width = 2;
+  int32 height = 3;
+  Stone stone = 4;
+  string timer = 5; // "move:15000", "game:60000:0", "game:60000:3000"
+}
+
+message OpenGameResponse {
+  string game_id = 1;
+}
+
+message JoinGame {
+  string game_id = 1;
+  string player_id = 2;
+}
+
+message JoinGameResponse {
+}
+
+message MakeMove {
+  string game_id = 1;
+  string player_id = 2;
+  int32 column = 3;
+}
+
+message MakeMoveResponse {
+}
+
+message GetGamesByPlayer {
+  enum State {
+    STATE_UNSPECIFIED = 0;
+    STATE_ALL = 1;
+    STATE_OPEN = 2;
+    STATE_RUNNING = 3;
+    STATE_WON = 4;
+    STATE_LOST = 5;
+    STATE_DRAWN = 6;
+  }
+  string player_id = 1;
+  State state = 2;
+  int32 page = 3;
+  int32 limit = 4;
+}
+
+message GetGamesByPlayerResponse {
+  repeated Game games = 1;
+  int32 total = 2;
+}
+
+message Game {
+  message Move {
+    enum Color {
+      COLOR_UNSPECIFIED = 0;
+      COLOR_RED = 1;
+      COLOR_YELLOW = 2;
+    }
+    int32 x = 1;
+    int32 y = 2;
+    Color color = 3;
+  }
+  string game_id = 1;
+  string red_player_id = 2;
+  string yellow_player_id = 3;
+  string current_player_id = 4;
+  repeated Move moves = 5;
+}
