@@ -42,4 +42,26 @@ final class ChatV1Factory
         return $message;
     }
 
+    /** @deprecated */
+    public static function createWriteMessage(
+        string $data
+    ): \GamingPlatform\Api\Chat\V1\WriteMessage {
+        static $template;
+        $template ??= new \GamingPlatform\Api\Chat\V1\WriteMessage();
+        $message = clone $template;
+        $message->mergeFromString($data);
+        return $message;
+    }
+
+    /** @deprecated */
+    public static function createWriteMessageResponse(
+        string $data
+    ): \GamingPlatform\Api\Chat\V1\WriteMessageResponse {
+        static $template;
+        $template ??= new \GamingPlatform\Api\Chat\V1\WriteMessageResponse();
+        $message = clone $template;
+        $message->mergeFromString($data);
+        return $message;
+    }
+
 }

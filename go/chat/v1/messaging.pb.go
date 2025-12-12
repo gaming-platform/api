@@ -133,6 +133,112 @@ func (x *InitiateChatResponse) GetCorrelationId() string {
 	return ""
 }
 
+type WriteMessage struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// This applies per author within a chat.
+	// Don't set if no idempotency is needed.
+	IdempotencyKey string `protobuf:"bytes,1,opt,name=idempotency_key,json=idempotencyKey,proto3" json:"idempotency_key,omitempty"`
+	ChatId         string `protobuf:"bytes,2,opt,name=chat_id,json=chatId,proto3" json:"chat_id,omitempty"`
+	AuthorId       string `protobuf:"bytes,3,opt,name=author_id,json=authorId,proto3" json:"author_id,omitempty"`
+	Message        string `protobuf:"bytes,4,opt,name=message,proto3" json:"message,omitempty"`
+	unknownFields  protoimpl.UnknownFields
+	sizeCache      protoimpl.SizeCache
+}
+
+func (x *WriteMessage) Reset() {
+	*x = WriteMessage{}
+	mi := &file_gamingplatform_api_chat_v1_messaging_proto_msgTypes[2]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *WriteMessage) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*WriteMessage) ProtoMessage() {}
+
+func (x *WriteMessage) ProtoReflect() protoreflect.Message {
+	mi := &file_gamingplatform_api_chat_v1_messaging_proto_msgTypes[2]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use WriteMessage.ProtoReflect.Descriptor instead.
+func (*WriteMessage) Descriptor() ([]byte, []int) {
+	return file_gamingplatform_api_chat_v1_messaging_proto_rawDescGZIP(), []int{2}
+}
+
+func (x *WriteMessage) GetIdempotencyKey() string {
+	if x != nil {
+		return x.IdempotencyKey
+	}
+	return ""
+}
+
+func (x *WriteMessage) GetChatId() string {
+	if x != nil {
+		return x.ChatId
+	}
+	return ""
+}
+
+func (x *WriteMessage) GetAuthorId() string {
+	if x != nil {
+		return x.AuthorId
+	}
+	return ""
+}
+
+func (x *WriteMessage) GetMessage() string {
+	if x != nil {
+		return x.Message
+	}
+	return ""
+}
+
+type WriteMessageResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *WriteMessageResponse) Reset() {
+	*x = WriteMessageResponse{}
+	mi := &file_gamingplatform_api_chat_v1_messaging_proto_msgTypes[3]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *WriteMessageResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*WriteMessageResponse) ProtoMessage() {}
+
+func (x *WriteMessageResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_gamingplatform_api_chat_v1_messaging_proto_msgTypes[3]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use WriteMessageResponse.ProtoReflect.Descriptor instead.
+func (*WriteMessageResponse) Descriptor() ([]byte, []int) {
+	return file_gamingplatform_api_chat_v1_messaging_proto_rawDescGZIP(), []int{3}
+}
+
 type MessageWritten struct {
 	state     protoimpl.MessageState `protogen:"open.v1"`
 	ChatId    string                 `protobuf:"bytes,1,opt,name=chat_id,json=chatId,proto3" json:"chat_id,omitempty"`
@@ -147,7 +253,7 @@ type MessageWritten struct {
 
 func (x *MessageWritten) Reset() {
 	*x = MessageWritten{}
-	mi := &file_gamingplatform_api_chat_v1_messaging_proto_msgTypes[2]
+	mi := &file_gamingplatform_api_chat_v1_messaging_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -159,7 +265,7 @@ func (x *MessageWritten) String() string {
 func (*MessageWritten) ProtoMessage() {}
 
 func (x *MessageWritten) ProtoReflect() protoreflect.Message {
-	mi := &file_gamingplatform_api_chat_v1_messaging_proto_msgTypes[2]
+	mi := &file_gamingplatform_api_chat_v1_messaging_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -172,7 +278,7 @@ func (x *MessageWritten) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MessageWritten.ProtoReflect.Descriptor instead.
 func (*MessageWritten) Descriptor() ([]byte, []int) {
-	return file_gamingplatform_api_chat_v1_messaging_proto_rawDescGZIP(), []int{2}
+	return file_gamingplatform_api_chat_v1_messaging_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *MessageWritten) GetChatId() string {
@@ -221,7 +327,13 @@ const file_gamingplatform_api_chat_v1_messaging_proto_rawDesc = "" +
 	"\aauthors\x18\x03 \x03(\tR\aauthors\"V\n" +
 	"\x14InitiateChatResponse\x12\x17\n" +
 	"\achat_id\x18\x01 \x01(\tR\x06chatId\x12%\n" +
-	"\x0ecorrelation_id\x18\x02 \x01(\tR\rcorrelationId\"\x9e\x01\n" +
+	"\x0ecorrelation_id\x18\x02 \x01(\tR\rcorrelationId\"\x87\x01\n" +
+	"\fWriteMessage\x12'\n" +
+	"\x0fidempotency_key\x18\x01 \x01(\tR\x0eidempotencyKey\x12\x17\n" +
+	"\achat_id\x18\x02 \x01(\tR\x06chatId\x12\x1b\n" +
+	"\tauthor_id\x18\x03 \x01(\tR\bauthorId\x12\x18\n" +
+	"\amessage\x18\x04 \x01(\tR\amessage\"\x16\n" +
+	"\x14WriteMessageResponse\"\x9e\x01\n" +
 	"\x0eMessageWritten\x12\x17\n" +
 	"\achat_id\x18\x01 \x01(\tR\x06chatId\x12\x1d\n" +
 	"\n" +
@@ -243,11 +355,13 @@ func file_gamingplatform_api_chat_v1_messaging_proto_rawDescGZIP() []byte {
 	return file_gamingplatform_api_chat_v1_messaging_proto_rawDescData
 }
 
-var file_gamingplatform_api_chat_v1_messaging_proto_msgTypes = make([]protoimpl.MessageInfo, 3)
+var file_gamingplatform_api_chat_v1_messaging_proto_msgTypes = make([]protoimpl.MessageInfo, 5)
 var file_gamingplatform_api_chat_v1_messaging_proto_goTypes = []any{
 	(*InitiateChat)(nil),         // 0: gamingplatform.api.chat.v1.InitiateChat
 	(*InitiateChatResponse)(nil), // 1: gamingplatform.api.chat.v1.InitiateChatResponse
-	(*MessageWritten)(nil),       // 2: gamingplatform.api.chat.v1.MessageWritten
+	(*WriteMessage)(nil),         // 2: gamingplatform.api.chat.v1.WriteMessage
+	(*WriteMessageResponse)(nil), // 3: gamingplatform.api.chat.v1.WriteMessageResponse
+	(*MessageWritten)(nil),       // 4: gamingplatform.api.chat.v1.MessageWritten
 }
 var file_gamingplatform_api_chat_v1_messaging_proto_depIdxs = []int32{
 	0, // [0:0] is the sub-list for method output_type
@@ -268,7 +382,7 @@ func file_gamingplatform_api_chat_v1_messaging_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_gamingplatform_api_chat_v1_messaging_proto_rawDesc), len(file_gamingplatform_api_chat_v1_messaging_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   3,
+			NumMessages:   5,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
