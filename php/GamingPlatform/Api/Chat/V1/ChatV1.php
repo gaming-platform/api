@@ -38,4 +38,24 @@ final class ChatV1
         if ($data !== null) $message->mergeFromString($data);
         return $message;
     }
+    public const string WriteMessageType = 'Chat.WriteMessage.v1';
+    public static function createWriteMessage(
+        ?string $data = null
+    ): WriteMessage {
+        static $template;
+        $template ??= new WriteMessage();
+        $message = clone $template;
+        if ($data !== null) $message->mergeFromString($data);
+        return $message;
+    }
+    public const string WriteMessageResponseType = 'Chat.WriteMessageResponse.v1';
+    public static function createWriteMessageResponse(
+        ?string $data = null
+    ): WriteMessageResponse {
+        static $template;
+        $template ??= new WriteMessageResponse();
+        $message = clone $template;
+        if ($data !== null) $message->mergeFromString($data);
+        return $message;
+    }
 }

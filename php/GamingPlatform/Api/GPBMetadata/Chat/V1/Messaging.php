@@ -16,7 +16,7 @@ class Messaging
         }
         $pool->internalAddGeneratedFile(
             '
-Ì
+Â
 *gamingplatform/api/chat/v1/messaging.protogamingplatform.api.chat.v1"P
 InitiateChat
 idempotency_key (	
@@ -24,7 +24,13 @@ class Messaging
 authors (	"?
 InitiateChatResponse
 chat_id (	
-correlation_id (	"m
+correlation_id (	"\\
+WriteMessage
+idempotency_key (	
+chat_id (	
+	author_id (	
+message (	"
+WriteMessageResponse"m
 MessageWritten
 chat_id (	
 

@@ -17,6 +17,18 @@ message InitiateChatResponse {
   string correlation_id = 2;
 }
 
+message WriteMessage {
+  // This applies per author within a chat.
+  // Don't set if no idempotency is needed.
+  string idempotency_key = 1;
+  string chat_id = 2;
+  string author_id = 3;
+  string message = 4;
+}
+
+message WriteMessageResponse {
+}
+
 message MessageWritten {
   string chat_id = 1;
   string message_id = 2;
