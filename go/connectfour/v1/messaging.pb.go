@@ -614,6 +614,9 @@ type Game struct {
 	YellowPlayerId  string                 `protobuf:"bytes,3,opt,name=yellow_player_id,json=yellowPlayerId,proto3" json:"yellow_player_id,omitempty"`
 	CurrentPlayerId string                 `protobuf:"bytes,4,opt,name=current_player_id,json=currentPlayerId,proto3" json:"current_player_id,omitempty"`
 	Moves           []*Game_Move           `protobuf:"bytes,5,rep,name=moves,proto3" json:"moves,omitempty"`
+	Width           int32                  `protobuf:"varint,6,opt,name=width,proto3" json:"width,omitempty"`
+	Height          int32                  `protobuf:"varint,7,opt,name=height,proto3" json:"height,omitempty"`
+	ChatId          string                 `protobuf:"bytes,8,opt,name=chat_id,json=chatId,proto3" json:"chat_id,omitempty"`
 	unknownFields   protoimpl.UnknownFields
 	sizeCache       protoimpl.SizeCache
 }
@@ -681,6 +684,27 @@ func (x *Game) GetMoves() []*Game_Move {
 		return x.Moves
 	}
 	return nil
+}
+
+func (x *Game) GetWidth() int32 {
+	if x != nil {
+		return x.Width
+	}
+	return 0
+}
+
+func (x *Game) GetHeight() int32 {
+	if x != nil {
+		return x.Height
+	}
+	return 0
+}
+
+func (x *Game) GetChatId() string {
+	if x != nil {
+		return x.ChatId
+	}
+	return ""
 }
 
 type Game_Move struct {
@@ -787,13 +811,16 @@ const file_gamingplatform_api_connectfour_v1_messaging_proto_rawDesc = "" +
 	"\vSTATE_DRAWN\x10\x06\"o\n" +
 	"\x18GetGamesByPlayerResponse\x12=\n" +
 	"\x05games\x18\x01 \x03(\v2'.gamingplatform.api.connectfour.v1.GameR\x05games\x12\x14\n" +
-	"\x05total\x18\x02 \x01(\x05R\x05total\"\x8d\x03\n" +
+	"\x05total\x18\x02 \x01(\x05R\x05total\"\xd4\x03\n" +
 	"\x04Game\x12\x17\n" +
 	"\agame_id\x18\x01 \x01(\tR\x06gameId\x12\"\n" +
 	"\rred_player_id\x18\x02 \x01(\tR\vredPlayerId\x12(\n" +
 	"\x10yellow_player_id\x18\x03 \x01(\tR\x0eyellowPlayerId\x12*\n" +
 	"\x11current_player_id\x18\x04 \x01(\tR\x0fcurrentPlayerId\x12B\n" +
-	"\x05moves\x18\x05 \x03(\v2,.gamingplatform.api.connectfour.v1.Game.MoveR\x05moves\x1a\xad\x01\n" +
+	"\x05moves\x18\x05 \x03(\v2,.gamingplatform.api.connectfour.v1.Game.MoveR\x05moves\x12\x14\n" +
+	"\x05width\x18\x06 \x01(\x05R\x05width\x12\x16\n" +
+	"\x06height\x18\a \x01(\x05R\x06height\x12\x17\n" +
+	"\achat_id\x18\b \x01(\tR\x06chatId\x1a\xad\x01\n" +
 	"\x04Move\x12\f\n" +
 	"\x01x\x18\x01 \x01(\x05R\x01x\x12\f\n" +
 	"\x01y\x18\x02 \x01(\x05R\x01y\x12H\n" +
