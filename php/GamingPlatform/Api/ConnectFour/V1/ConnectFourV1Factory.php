@@ -54,6 +54,39 @@ final class ConnectFourV1Factory
     }
 
     /** @deprecated */
+    public static function createGetOpenGames(
+        string $data
+    ): \GamingPlatform\Api\ConnectFour\V1\GetOpenGames {
+        static $template;
+        $template ??= new \GamingPlatform\Api\ConnectFour\V1\GetOpenGames();
+        $message = clone $template;
+        $message->mergeFromString($data);
+        return $message;
+    }
+
+    /** @deprecated */
+    public static function createGetOpenGamesResponse_Game(
+        string $data
+    ): \GamingPlatform\Api\ConnectFour\V1\GetOpenGamesResponse\Game {
+        static $template;
+        $template ??= new \GamingPlatform\Api\ConnectFour\V1\GetOpenGamesResponse\Game();
+        $message = clone $template;
+        $message->mergeFromString($data);
+        return $message;
+    }
+
+    /** @deprecated */
+    public static function createGetOpenGamesResponse(
+        string $data
+    ): \GamingPlatform\Api\ConnectFour\V1\GetOpenGamesResponse {
+        static $template;
+        $template ??= new \GamingPlatform\Api\ConnectFour\V1\GetOpenGamesResponse();
+        $message = clone $template;
+        $message->mergeFromString($data);
+        return $message;
+    }
+
+    /** @deprecated */
     public static function createJoinGame(
         string $data
     ): \GamingPlatform\Api\ConnectFour\V1\JoinGame {

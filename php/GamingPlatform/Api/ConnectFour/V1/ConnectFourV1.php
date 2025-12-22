@@ -47,6 +47,35 @@ final class ConnectFourV1
         if ($data !== null) $message->mergeFromString($data);
         return $message;
     }
+    public const string GetOpenGamesType = 'ConnectFour.GetOpenGames.v1';
+    public static function createGetOpenGames(
+        ?string $data = null
+    ): GetOpenGames {
+        static $template;
+        $template ??= new GetOpenGames();
+        $message = clone $template;
+        if ($data !== null) $message->mergeFromString($data);
+        return $message;
+    }
+    public static function createGetOpenGamesResponse_Game(
+        ?string $data = null
+    ): GetOpenGamesResponse\Game {
+        static $template;
+        $template ??= new GetOpenGamesResponse\Game();
+        $message = clone $template;
+        if ($data !== null) $message->mergeFromString($data);
+        return $message;
+    }
+    public const string GetOpenGamesResponseType = 'ConnectFour.GetOpenGamesResponse.v1';
+    public static function createGetOpenGamesResponse(
+        ?string $data = null
+    ): GetOpenGamesResponse {
+        static $template;
+        $template ??= new GetOpenGamesResponse();
+        $message = clone $template;
+        if ($data !== null) $message->mergeFromString($data);
+        return $message;
+    }
     public const string JoinGameType = 'ConnectFour.JoinGame.v1';
     public static function createJoinGame(
         ?string $data = null
